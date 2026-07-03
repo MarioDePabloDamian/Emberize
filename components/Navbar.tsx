@@ -22,10 +22,6 @@ export default function Navbar() {
   useEffect(() => {
     const { hash } = window.location;
     if (hash) document.querySelector(hash)?.scrollIntoView();
-
-    const closeMenu = () => setOpen(false);
-    window.addEventListener("hashchange", closeMenu);
-    return () => window.removeEventListener("hashchange", closeMenu);
   }, []);
 
   return (
@@ -67,7 +63,7 @@ export default function Navbar() {
             href="#contacto"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center rounded-xl bg-ember px-3 py-2 text-xs font-semibold text-night transition-colors duration-200 hover:bg-ember-bright cursor-pointer sm:px-5 sm:py-2.5 sm:text-sm"
+            className="hidden sm:inline-flex items-center rounded-xl bg-ember px-5 py-2.5 text-sm font-semibold text-night transition-colors duration-200 hover:bg-ember-bright cursor-pointer"
           >
             Agenda una demo
           </motion.a>
@@ -96,6 +92,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
+                  onClick={() => setOpen(false)}
                   className="block rounded-lg px-3 py-2.5 text-sm text-ink-muted hover:text-ink hover:bg-surface-2 transition-colors duration-200"
                 >
                   {l.label}
@@ -105,6 +102,7 @@ export default function Navbar() {
             <li>
               <a
                 href="#contacto"
+                onClick={() => setOpen(false)}
                 className="mt-1 block rounded-lg bg-ember px-3 py-2.5 text-center text-sm font-semibold text-night"
               >
                 Agenda una demo
