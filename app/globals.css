@@ -20,6 +20,13 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -27,26 +34,27 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Sin barras de scroll nativas; el progreso va en ScrollProgress (barra superior) */
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }
 
 ::selection {
   background: var(--color-flame);
   color: white;
-}
-
-/* Scrollbar sutil acorde a la marca */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-night);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-surface-2);
-  border-radius: 8px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-flame-deep);
 }
 
 @utility glass {
