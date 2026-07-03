@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  /* Marca Emberize: llama azul + brasa naranja sobre oscuro profundo */
+  --color-night: #050a18;
+  --color-surface: #0b1226;
+  --color-surface-2: #101a36;
+  --color-flame: #2e86f5;
+  --color-flame-bright: #4da3ff;
+  --color-flame-deep: #1d5fd0;
+  --color-ember: #ff6b2c;
+  --color-ember-bright: #ff8a4d;
+  --color-ink: #e8eef9;
+  --color-ink-muted: #94a3c7;
+  --color-line: rgba(148, 163, 199, 0.16);
+
+  --font-display: var(--font-bebas), sans-serif;
+  --font-sans: var(--font-dm-sans), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-night);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-flame);
+  color: white;
+}
+
+/* Scrollbar sutil acorde a la marca */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-night);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-2);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-flame-deep);
+}
+
+@utility glass {
+  background: rgba(11, 18, 38, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(148, 163, 199, 0.14);
+}
+
+@utility text-glow-blue {
+  text-shadow: 0 0 24px rgba(46, 134, 245, 0.55);
+}
+
+@utility glow-ember {
+  box-shadow: 0 0 32px rgba(255, 107, 44, 0.35);
+}
+
+@utility glow-flame {
+  box-shadow: 0 0 40px rgba(46, 134, 245, 0.25);
+}
+
+/* Marquee infinito (decorativo, se detiene con reduced motion) */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
