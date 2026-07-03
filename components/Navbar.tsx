@@ -12,6 +12,11 @@ const links = [
   { href: "#faq", label: "FAQ" },
 ] as const;
 
+function goTo(hash: string) {
+  document.querySelector(hash)?.scrollIntoView();
+  history.replaceState(null, "", hash);
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -19,9 +24,15 @@ export default function Navbar() {
 
   useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 24));
 
+  const onNavClick = (hash: string, closeMenu = false) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    goTo(hash);
+    if (closeMenu) setOpen(false);
+  };
+
   useEffect(() => {
     const { hash } = window.location;
-    if (hash) document.querySelector(hash)?.scrollIntoView();
+    if (hash) goTo(hash);
   }, []);
 
   return (
@@ -31,7 +42,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="flex items-center justify-between" aria-label="Principal">
-        <a href="#inicio" className="flex items-center gap-2.5 cursor-pointer group">
+        <a href="#inicio" onClick={onNavClick("#inicio", open)} className="flex items-center gap-2.5 cursor-pointer group">
           <Image
             src="/logo.png"
             alt="Logo de Emberize, flor de loto en llamas azules"
@@ -50,6 +61,7 @@ export default function Navbar() {
             <li key={l.href}>
               <a
                 href={l.href}
+                onClick={onNavClick(l.href)}
                 className="relative text-sm text-ink-muted hover:text-ink transition-colors duration-200 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-flame-bright after:transition-all after:duration-300 hover:after:w-full"
               >
                 {l.label}
@@ -61,6 +73,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <motion.a
             href="#contacto"
+            onClick={onNavClick("#contacto")}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
             className="hidden sm:inline-flex items-center rounded-xl bg-ember px-5 py-2.5 text-sm font-semibold text-night transition-colors duration-200 hover:bg-ember-bright cursor-pointer"
@@ -92,7 +105,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={onNavClick(l.href, true)}
                   className="block rounded-lg px-3 py-2.5 text-sm text-ink-muted hover:text-ink hover:bg-surface-2 transition-colors duration-200"
                 >
                   {l.label}
@@ -102,7 +115,7 @@ export default function Navbar() {
             <li>
               <a
                 href="#contacto"
-                onClick={() => setOpen(false)}
+                onClick={onNavClick("#contacto", true)}
                 className="mt-1 block rounded-lg bg-ember px-3 py-2.5 text-center text-sm font-semibold text-night"
               >
                 Agenda una demo
