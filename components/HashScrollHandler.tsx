@@ -1,15 +1,24 @@
 "use client";
 
 import { useEffect } from "react";
-import { scrollToSection } from "@/lib/scroll-to-section";
+import { restoreHashScroll, scrollToSection } from "@/lib/scroll-to-section";
 
-/** En táctil, el hash nativo falla a menudo; interceptamos todos los enlaces internos. */
 export default function HashScrollHandler() {
   useEffect(() => {
-    const touch = window.matchMedia("(hover: none) and (pointer: coarse)");
-    if (!touch.matches) return;
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
 
+    restoreHashScroll();
+    window.addEventListener("load", restoreHashScroll);
+
+    const onHashChange = () => restoreHashScroll();
+    window.addEventListener("hashchange", onHashChange);
+
+    const touch = window.matchMedia("(hover: none) and (pointer: coarse)");
     const onClick = (event: MouseEvent) => {
+      if (!touch.matches) return;
+
       const anchor = (event.target as Element | null)?.closest("a[href^='#']");
       if (!anchor) return;
 
@@ -21,7 +30,12 @@ export default function HashScrollHandler() {
     };
 
     document.addEventListener("click", onClick, { passive: false });
-    return () => document.removeEventListener("click", onClick);
+
+    return () => {
+      window.removeEventListener("load", restoreHashScroll);
+      window.removeEventListener("hashchange", onHashChange);
+      document.removeEventListener("click", onClick);
+    };
   }, []);
 
   return null;
