@@ -51,10 +51,19 @@ export default function RootLayout({
       className={`${bebas.variable} ${dmSans.variable} antialiased scroll-smooth scroll-pt-22 scrollbar-none`}
     >
       <body className="bg-night text-ink font-sans scrollbar-none selection:bg-flame selection:text-white">
+        <Script id="hash-nav" strategy="beforeInteractive">
+          {`(function(){try{history.scrollRestoration="manual"}catch(e){}function s(){var h=location.hash;if(!h)return;var e=document.querySelector(h);if(!e)return;var t=e.getBoundingClientRect().top+scrollY-88;scrollTo({top:t,behavior:"instant"})}addEventListener("hashchange",s);function r(){s();setTimeout(s,0);setTimeout(s,100);setTimeout(s,300)}addEventListener("DOMContentLoaded",r);addEventListener("load",r)})();`}
+        </Script>
         {children}
         <Script
           src="https://link.msgsndr.com/js/external-tracking.js"
           data-tracking-id="tk_15fc8c0b0a794e1e99062d7ab7604771"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="6a47ed011cded9008ad72ce2"
           strategy="afterInteractive"
         />
       </body>
