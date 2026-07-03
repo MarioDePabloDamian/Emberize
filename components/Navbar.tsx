@@ -19,6 +19,13 @@ export default function Navbar() {
 
   useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 24));
 
+  const menuNav = (hash: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    document.querySelector(hash)?.scrollIntoView();
+    history.replaceState(null, "", hash);
+    setOpen(false);
+  };
+
   useEffect(() => {
     const { hash } = window.location;
     if (hash) document.querySelector(hash)?.scrollIntoView();
@@ -92,7 +99,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={menuNav(l.href)}
                   className="block rounded-lg px-3 py-2.5 text-sm text-ink-muted hover:text-ink hover:bg-surface-2 transition-colors duration-200"
                 >
                   {l.label}
@@ -102,7 +109,7 @@ export default function Navbar() {
             <li>
               <a
                 href="#contacto"
-                onClick={() => setOpen(false)}
+                onClick={menuNav("#contacto")}
                 className="mt-1 block rounded-lg bg-ember px-3 py-2.5 text-center text-sm font-semibold text-night"
               >
                 Agenda una demo
