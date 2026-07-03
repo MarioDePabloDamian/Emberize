@@ -48,9 +48,9 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${bebas.variable} ${dmSans.variable} h-full antialiased scroll-smooth scroll-pt-22 overflow-x-hidden scrollbar-none motion-reduce:scroll-auto`}
+      className={`${bebas.variable} ${dmSans.variable} antialiased scroll-pt-22 overflow-y-auto scrollbar-none`}
     >
-      <body className="min-h-full flex flex-col bg-night text-ink font-sans overflow-x-hidden scrollbar-none selection:bg-flame selection:text-white">
+      <body className="bg-night text-ink font-sans scrollbar-none selection:bg-flame selection:text-white">
         {children}
         <Script
           src="https://link.msgsndr.com/js/external-tracking.js"

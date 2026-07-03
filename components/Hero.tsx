@@ -21,7 +21,7 @@ export default function Hero() {
     <section
       id="inicio"
       ref={ref}
-      className="relative flex min-h-svh min-h-dvh flex-col items-center justify-center overflow-x-hidden touch-primary:overflow-y-visible px-6 pt-28 pb-16"
+      className="relative flex min-h-svh min-h-dvh scroll-mt-22 flex-col items-center justify-center overflow-x-clip px-6 pt-28 pb-16"
     >
       {/* Resplandor de fondo */}
       <div

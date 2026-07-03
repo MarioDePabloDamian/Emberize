@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
+import { scrollToSection } from "@/lib/scroll-to-section";
 
 const links = [
   { href: "#problema", label: "El problema" },
@@ -12,24 +13,6 @@ const links = [
   { href: "#faq", label: "FAQ" },
 ] as const;
 
-const NAV_SCROLL_OFFSET = 88;
-
-function scrollToSection(hash: string, behavior: ScrollBehavior = "smooth") {
-  const id = hash.slice(1);
-  const target = document.getElementById(id);
-  if (!target) return;
-
-  const top = target.getBoundingClientRect().top + window.scrollY - NAV_SCROLL_OFFSET;
-  window.scrollTo({ top, behavior });
-  window.history.pushState(null, "", hash);
-}
-
-function navScrollBehavior(): ScrollBehavior {
-  if (typeof window === "undefined") return "smooth";
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return "auto";
-  return "smooth";
-}
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -37,24 +20,17 @@ export default function Navbar() {
 
   useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 24));
 
-  const handleMobileNav =
-    (hash: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
-      e.preventDefault();
-      scrollToSection(hash, navScrollBehavior());
-      setOpen(false);
-    };
+  const handleMobileNav = (hash: string) => {
+    scrollToSection(hash);
+    setOpen(false);
+  };
 
   return (
     <header
-      className={`fixed top-4 left-4 right-4 z-50 mx-auto max-w-6xl rounded-2xl px-5 py-3 transition-all duration-300 touch-primary:translate-z-0 touch-primary:[backface-visibility:hidden] ${
+      className={`fixed top-4 left-4 right-4 z-50 mx-auto max-w-6xl rounded-2xl px-5 py-3 transition-[background-color,box-shadow,border-color] duration-300 ${
         scrolled ? "glass glow-flame" : "bg-transparent border border-transparent"
       }`}
     >
-      <motion.div
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
       <nav className="flex items-center justify-between" aria-label="Principal">
         <a href="#inicio" className="flex items-center gap-2.5 cursor-pointer group">
           <Image
@@ -97,7 +73,7 @@ export default function Navbar() {
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
-            className="md:hidden rounded-lg p-2 text-ink hover:bg-surface-2 transition-colors duration-200 cursor-pointer"
+            className="md:hidden rounded-lg p-2 text-ink hover:bg-surface-2 transition-colors duration-200 cursor-pointer touch-manipulation"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -115,28 +91,27 @@ export default function Navbar() {
           >
             {links.map((l) => (
               <li key={l.href}>
-                <a
-                  href={l.href}
-                  onClick={handleMobileNav(l.href)}
-                  className="block rounded-lg px-3 py-2.5 text-sm text-ink-muted hover:text-ink hover:bg-surface-2 transition-colors duration-200"
+                <button
+                  type="button"
+                  onClick={() => handleMobileNav(l.href)}
+                  className="w-full rounded-lg px-3 py-2.5 text-left text-sm text-ink-muted hover:text-ink hover:bg-surface-2 transition-colors duration-200 cursor-pointer touch-manipulation"
                 >
                   {l.label}
-                </a>
+                </button>
               </li>
             ))}
             <li>
-              <a
-                href="#contacto"
-                onClick={handleMobileNav("#contacto")}
-                className="mt-1 block rounded-lg bg-ember px-3 py-2.5 text-center text-sm font-semibold text-night"
+              <button
+                type="button"
+                onClick={() => handleMobileNav("#contacto")}
+                className="mt-1 w-full rounded-lg bg-ember px-3 py-2.5 text-center text-sm font-semibold text-night cursor-pointer touch-manipulation"
               >
                 Agenda una demo
-              </a>
+              </button>
             </li>
           </motion.ul>
         )}
       </AnimatePresence>
-      </motion.div>
     </header>
   );
 }

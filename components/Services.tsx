@@ -37,7 +37,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="servicios" className="relative px-6 py-24 sm:py-32">
+    <section id="servicios" className="relative scroll-mt-22 px-6 py-24 sm:py-32">
       {/* Transición de color: el azul gana intensidad en la solución */}
       <div
         aria-hidden

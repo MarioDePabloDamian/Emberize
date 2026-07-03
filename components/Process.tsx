@@ -41,7 +41,7 @@ export default function Process() {
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section id="metodo" className="relative px-6 py-24 sm:py-32">
+    <section id="metodo" className="relative scroll-mt-22 px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-5xl">
         <SectionHeading
           chapter="Capítulo 03 — El método"

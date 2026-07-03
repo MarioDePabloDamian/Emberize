@@ -30,7 +30,7 @@ const pains = [
 
 export default function Problem() {
   return (
-    <section id="problema" className="relative px-6 py-24 sm:py-32">
+    <section id="problema" className="relative scroll-mt-22 px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           chapter="Capítulo 01 — El problema"

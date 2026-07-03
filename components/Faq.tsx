@@ -36,7 +36,7 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative px-6 py-24 sm:py-32">
+    <section id="faq" className="relative scroll-mt-22 px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-3xl">
         <SectionHeading
           chapter="Capítulo 05 — Las dudas"

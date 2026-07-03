@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@custom-variant touch-primary (@media (hover: none) and (pointer: coarse));
-
 @theme {
   /* Marca Emberize: llama azul + brasa naranja sobre oscuro profundo */
   --color-night: #050a18;
