@@ -19,7 +19,7 @@ export default function Marquee() {
       aria-hidden
       className="relative overflow-hidden border-y border-line bg-surface py-4"
     >
-      <div className="animate-marquee flex w-max items-center gap-10">
+      <div className="animate-marquee motion-reduce:animate-none flex w-max items-center gap-10">
         {row.map((d, i) => (
           <span
             key={`${d}-${i}`}

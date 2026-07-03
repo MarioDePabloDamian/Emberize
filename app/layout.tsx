@@ -46,8 +46,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${bebas.variable} ${dmSans.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+    <html
+      lang="es"
+      className={`${bebas.variable} ${dmSans.variable} h-full antialiased scroll-smooth scroll-pt-22 overflow-x-hidden scrollbar-none motion-reduce:scroll-auto`}
+    >
+      <body className="min-h-full flex flex-col bg-night text-ink font-sans overflow-x-hidden scrollbar-none selection:bg-flame selection:text-white">
         {children}
         <Script
           src="https://link.msgsndr.com/js/external-tracking.js"

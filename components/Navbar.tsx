@@ -10,7 +10,25 @@ const links = [
   { href: "#servicios", label: "Servicios" },
   { href: "#metodo", label: "Método" },
   { href: "#faq", label: "FAQ" },
-];
+] as const;
+
+const NAV_SCROLL_OFFSET = 88;
+
+function scrollToSection(hash: string, behavior: ScrollBehavior = "smooth") {
+  const id = hash.slice(1);
+  const target = document.getElementById(id);
+  if (!target) return;
+
+  const top = target.getBoundingClientRect().top + window.scrollY - NAV_SCROLL_OFFSET;
+  window.scrollTo({ top, behavior });
+  window.history.pushState(null, "", hash);
+}
+
+function navScrollBehavior(): ScrollBehavior {
+  if (typeof window === "undefined") return "smooth";
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return "auto";
+  return "smooth";
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -19,9 +37,16 @@ export default function Navbar() {
 
   useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 24));
 
+  const handleMobileNav =
+    (hash: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      scrollToSection(hash, navScrollBehavior());
+      setOpen(false);
+    };
+
   return (
     <header
-      className={`fixed top-4 left-4 right-4 z-50 mx-auto max-w-6xl rounded-2xl px-5 py-3 transition-all duration-300 ${
+      className={`fixed top-4 left-4 right-4 z-50 mx-auto max-w-6xl rounded-2xl px-5 py-3 transition-all duration-300 touch-primary:translate-z-0 touch-primary:[backface-visibility:hidden] ${
         scrolled ? "glass glow-flame" : "bg-transparent border border-transparent"
       }`}
     >
@@ -92,7 +117,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={handleMobileNav(l.href)}
                   className="block rounded-lg px-3 py-2.5 text-sm text-ink-muted hover:text-ink hover:bg-surface-2 transition-colors duration-200"
                 >
                   {l.label}
@@ -102,7 +127,7 @@ export default function Navbar() {
             <li>
               <a
                 href="#contacto"
-                onClick={() => setOpen(false)}
+                onClick={handleMobileNav("#contacto")}
                 className="mt-1 block rounded-lg bg-ember px-3 py-2.5 text-center text-sm font-semibold text-night"
               >
                 Agenda una demo
