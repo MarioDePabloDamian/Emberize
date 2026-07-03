@@ -48,7 +48,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${bebas.variable} ${dmSans.variable} antialiased scroll-pt-22 overflow-y-auto scrollbar-none`}
+      className={`${bebas.variable} ${dmSans.variable} antialiased scroll-smooth scroll-pt-22 scrollbar-none`}
     >
       <body className="bg-night text-ink font-sans scrollbar-none selection:bg-flame selection:text-white">
         {children}

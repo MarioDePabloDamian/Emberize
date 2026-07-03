@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
-import { scrollToSection } from "@/lib/scroll-to-section";
 
 const links = [
   { href: "#problema", label: "El problema" },
@@ -20,10 +19,10 @@ export default function Navbar() {
 
   useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 24));
 
-  const handleMobileNav = (hash: string) => {
-    scrollToSection(hash);
-    setOpen(false);
-  };
+  useEffect(() => {
+    const { hash } = window.location;
+    if (hash) document.querySelector(hash)?.scrollIntoView();
+  }, []);
 
   return (
     <header
@@ -73,7 +72,7 @@ export default function Navbar() {
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
-            className="md:hidden rounded-lg p-2 text-ink hover:bg-surface-2 transition-colors duration-200 cursor-pointer touch-manipulation"
+            className="md:hidden rounded-lg p-2 text-ink hover:bg-surface-2 transition-colors duration-200 cursor-pointer"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -91,23 +90,23 @@ export default function Navbar() {
           >
             {links.map((l) => (
               <li key={l.href}>
-                <button
-                  type="button"
-                  onClick={() => handleMobileNav(l.href)}
-                  className="w-full rounded-lg px-3 py-2.5 text-left text-sm text-ink-muted hover:text-ink hover:bg-surface-2 transition-colors duration-200 cursor-pointer touch-manipulation"
+                <a
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="block rounded-lg px-3 py-2.5 text-sm text-ink-muted hover:text-ink hover:bg-surface-2 transition-colors duration-200"
                 >
                   {l.label}
-                </button>
+                </a>
               </li>
             ))}
             <li>
-              <button
-                type="button"
-                onClick={() => handleMobileNav("#contacto")}
-                className="mt-1 w-full rounded-lg bg-ember px-3 py-2.5 text-center text-sm font-semibold text-night cursor-pointer touch-manipulation"
+              <a
+                href="#contacto"
+                onClick={() => setOpen(false)}
+                className="mt-1 block rounded-lg bg-ember px-3 py-2.5 text-center text-sm font-semibold text-night"
               >
                 Agenda una demo
-              </button>
+              </a>
             </li>
           </motion.ul>
         )}

@@ -1,5 +1,4 @@
 import Navbar from "@/components/Navbar";
-import HashScrollHandler from "@/components/HashScrollHandler";
 import ScrollProgress from "@/components/ScrollProgress";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
@@ -15,7 +14,6 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
-      <HashScrollHandler />
       <ScrollProgress />
       <Navbar />
       <main className="overflow-x-clip">
