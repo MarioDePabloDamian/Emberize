@@ -68,6 +68,18 @@ body {
   box-shadow: 0 0 40px rgba(46, 134, 245, 0.25);
 }
 
+/* Touch-primary (móvil/tablet táctil): fixed + backdrop-filter y overflow del hero */
+@media (hover: none) and (pointer: coarse) {
+  header.fixed {
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  #inicio {
+    overflow-y: visible;
+  }
+}
+
 /* Marquee infinito (decorativo, se detiene con reduced motion) */
 @keyframes marquee {
   from {

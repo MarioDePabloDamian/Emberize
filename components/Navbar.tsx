@@ -20,14 +20,16 @@ export default function Navbar() {
   useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 24));
 
   return (
-    <motion.header
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+    <header
       className={`fixed top-4 left-4 right-4 z-50 mx-auto max-w-6xl rounded-2xl px-5 py-3 transition-all duration-300 ${
         scrolled ? "glass glow-flame" : "bg-transparent border border-transparent"
       }`}
     >
+      <motion.div
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
       <nav className="flex items-center justify-between" aria-label="Principal">
         <a href="#inicio" className="flex items-center gap-2.5 cursor-pointer group">
           <Image
@@ -109,6 +111,7 @@ export default function Navbar() {
           </motion.ul>
         )}
       </AnimatePresence>
-    </motion.header>
+      </motion.div>
+    </header>
   );
 }
