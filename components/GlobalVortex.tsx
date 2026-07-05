@@ -60,7 +60,6 @@ export default function GlobalVortex() {
         rangeSpeed={isLite ? 0.7 : 1.2}
         baseRadius={1}
         rangeRadius={isLite ? 1.2 : 1.8}
-        enableGlow={!isLite}
         containerClassName="h-full w-full"
       />
     </div>
