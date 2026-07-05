@@ -9,22 +9,22 @@ const pains = [
   {
     icon: MessageCircleOff,
     title: "WhatsApp sin responder",
-    text: "Un padre pregunta por clases infantiles a las 21:30. Nadie contesta hasta el día siguiente. Ya se apuntó en otro gimnasio.",
+    text: "Alguien pregunta por clases de reformer a las 21:30. Nadie contesta hasta el día siguiente. Ya reservó en otro estudio.",
   },
   {
     icon: PhoneMissed,
-    title: "Llamadas perdidas en plena clase",
-    text: "Estás dando clase de Muay Thai y suena el teléfono. Cada llamada perdida es una matrícula que se enfría.",
+    title: "Llamadas perdidas en plena sesión",
+    text: "Estás guiando una clase y suena el teléfono. Cada llamada perdida es una alumna nueva que se enfría.",
   },
   {
     icon: CalendarX,
     title: "Clases de prueba que no se presentan",
-    text: "Agendas pruebas gratuitas a mano y la mitad no aparece porque nadie les recordó ni les hizo seguimiento.",
+    text: "Agendas sesiones de prueba a mano y la mitad no aparece porque nadie les recordó ni les hizo seguimiento.",
   },
   {
     icon: TrendingDown,
-    title: "Bajas silenciosas",
-    text: "Un alumno deja de venir dos semanas y nadie se entera hasta que cancela la cuota. Recuperarlo ya es tarde.",
+    title: "Invisibles en Google y en ChatGPT",
+    text: "Cuando alguien busca “pilates cerca de mí” o se lo pregunta a una IA, tu estudio no aparece. Ese cliente ya es de otro.",
   },
 ];
 
@@ -36,10 +36,10 @@ export default function Problem() {
           chapter="Capítulo 01 — El problema"
           title={
             <>
-              Cada día pierdes alumnos <span className="text-ember">sin darte cuenta</span>
+              Cada día pierdes alumnas <span className="text-sage">sin darte cuenta</span>
             </>
           }
-          subtitle="Eres experto en formar luchadores, no en perseguir mensajes. Mientras entrenas a tus alumnos, los interesados se escapan por las grietas."
+          subtitle="Eres experta en cuidar cuerpos y posturas, no en perseguir mensajes. Mientras guías tus sesiones, las interesadas se escapan por las grietas."
         />
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2">
@@ -51,9 +51,9 @@ export default function Problem() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.21, 0.65, 0.36, 1] }}
               whileHover={{ y: -4 }}
-              className="group glass rounded-2xl p-7 transition-colors duration-300 hover:border-ember/40 cursor-default"
+              className="group glass rounded-2xl p-7 transition-colors duration-300 hover:border-sage/40 cursor-default"
             >
-              <div className="mb-4 inline-flex rounded-xl bg-ember/10 p-3 text-ember transition-colors duration-300 group-hover:bg-ember/20">
+              <div className="mb-4 inline-flex rounded-xl bg-sage/10 p-3 text-sage transition-colors duration-300 group-hover:bg-sage/20">
                 <p.icon className="h-6 w-6" aria-hidden />
               </div>
               <h3 className="mb-2 text-lg font-bold text-ink">{p.title}</h3>

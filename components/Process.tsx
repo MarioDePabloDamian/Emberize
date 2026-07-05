@@ -8,27 +8,27 @@ import SectionHeading from "./SectionHeading";
 const steps = [
   {
     icon: Search,
-    belt: "Cinturón blanco",
+    belt: "Paso 01 — Respira",
     title: "Diagnóstico",
-    text: "Analizamos cómo llegan y se pierden tus alumnos hoy: canales, horarios pico de consultas y puntos de fuga. Sin compromiso.",
+    text: "Analizamos cómo llegan y se pierden tus alumnas hoy: canales, horarios pico de consultas, visibilidad en Google y puntos de fuga. Sin compromiso.",
   },
   {
     icon: PencilRuler,
-    belt: "Cinturón azul",
+    belt: "Paso 02 — Alinea",
     title: "Diseño del sistema",
-    text: "Te proponemos el combo exacto: qué automatizar, qué responde el chatbot, qué capta la landing y qué atiende la voz.",
+    text: "Te proponemos el combo exacto: qué automatizar, qué responde el chatbot, qué capta la landing, qué atiende la voz y qué posicionar en buscadores.",
   },
   {
     icon: Rocket,
-    belt: "Cinturón marrón",
+    belt: "Paso 03 — Activa",
     title: "Implementación",
-    text: "Lo montamos, lo entrenamos con los datos de tu escuela y lo probamos contigo. En 2-4 semanas está trabajando.",
+    text: "Lo montamos, lo entrenamos con los datos de tu estudio y lo probamos contigo. En 2-4 semanas está trabajando.",
   },
   {
     icon: LineChart,
-    belt: "Cinturón negro",
+    belt: "Paso 04 — Fluye",
     title: "Optimización continua",
-    text: "Medimos conversaciones, citas y matrículas. Ajustamos cada mes para que el sistema mejore como un buen alumno.",
+    text: "Medimos conversaciones, reservas y posiciones en Google. Ajustamos cada mes para que el sistema mejore con constancia, como una buena práctica.",
   },
 ];
 
@@ -47,17 +47,17 @@ export default function Process() {
           chapter="Capítulo 03 — El método"
           title={
             <>
-              De cinturón blanco a <span className="text-flame-bright">negro</span> en 4 pasos
+              Un método con <span className="text-flame-bright">control y fluidez</span>
             </>
           }
-          subtitle="Como en el tatami: progresión clara, técnica depurada y resultados medibles."
+          subtitle="Como en el pilates: progresión clara, técnica precisa y resultados que se notan."
         />
 
         <div ref={ref} className="relative mt-16">
           {/* Línea de progreso que se dibuja con el scroll */}
           <div className="absolute left-6 top-0 bottom-0 w-px bg-line sm:left-1/2" aria-hidden>
             <motion.div
-              className="h-full w-full origin-top bg-gradient-to-b from-flame-bright via-flame to-ember"
+              className="h-full w-full origin-top bg-gradient-to-b from-flame-bright via-flame to-sage"
               style={{ scaleY: lineScale }}
             />
           </div>
@@ -84,7 +84,7 @@ export default function Process() {
                     <s.icon className="h-4 w-4" aria-hidden />
                   </div>
                   <div className="glass rounded-2xl p-6 transition-colors duration-300 hover:border-flame/40">
-                    <p className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-ember">
+                    <p className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-sage">
                       {s.belt}
                     </p>
                     <h3 className="mb-2 text-lg font-bold text-ink">

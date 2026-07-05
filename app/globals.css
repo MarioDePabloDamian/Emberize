@@ -1,20 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  /* Marca Emberize: llama azul + brasa naranja sobre oscuro profundo */
-  --color-night: #050a18;
+  /* Marca Emberize: loto azul + acento salvia wellness (pilates) sobre oscuro profundo */
+  --color-night: #000000;
   --color-surface: #0b1226;
   --color-surface-2: #101a36;
   --color-flame: #2e86f5;
   --color-flame-bright: #4da3ff;
   --color-flame-deep: #1d5fd0;
-  --color-ember: #ff6b2c;
-  --color-ember-bright: #ff8a4d;
+  --color-sage: #34d399;
+  --color-sage-bright: #6ee7b7;
+  --color-sage-deep: #10b981;
   --color-ink: #e8eef9;
   --color-ink-muted: #94a3c7;
   --color-line: rgba(148, 163, 199, 0.16);
 
-  --font-display: var(--font-bebas), sans-serif;
+  --font-display: var(--font-lora), serif;
   --font-sans: var(--font-dm-sans), sans-serif;
 
   --animate-marquee: marquee 32s linear infinite;
@@ -49,12 +50,71 @@
   text-shadow: 0 0 24px rgba(46, 134, 245, 0.55);
 }
 
-@utility glow-ember {
-  box-shadow: 0 0 32px rgba(255, 107, 44, 0.35);
+@utility glow-sage {
+  box-shadow: 0 0 32px rgba(52, 211, 153, 0.35);
 }
 
 @utility glow-flame {
   box-shadow: 0 0 40px rgba(46, 134, 245, 0.25);
+}
+
+@utility form-input {
+  height: 2.75rem;
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-line);
+  background: color-mix(in srgb, var(--color-surface-2) 88%, transparent);
+  padding-inline: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--color-ink);
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &::placeholder {
+    color: color-mix(in srgb, var(--color-ink-muted) 55%, transparent);
+  }
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--color-flame) 35%, var(--color-line));
+  }
+
+  &:focus-visible {
+    border-color: var(--color-flame-bright);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-flame) 22%, transparent);
+  }
+}
+
+@utility form-textarea {
+  min-height: 7.5rem;
+  width: 100%;
+  resize: vertical;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-line);
+  background: color-mix(in srgb, var(--color-surface-2) 88%, transparent);
+  padding: 0.875rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  color: var(--color-ink);
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &::placeholder {
+    color: color-mix(in srgb, var(--color-ink-muted) 55%, transparent);
+  }
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--color-flame) 35%, var(--color-line));
+  }
+
+  &:focus-visible {
+    border-color: var(--color-flame-bright);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-flame) 22%, transparent);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -64,4 +124,9 @@
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+.emberize-voice-widget-host chat-widget {
+  display: block;
+  width: 100%;
 }

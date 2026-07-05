@@ -1,6 +1,6 @@
 # Emberize — Landing Page
 
-Landing page de **Emberize**, agencia de automatización con IA especializada en escuelas de artes marciales y deportes de contacto.
+Landing page de **Emberize**, agencia de automatización con IA, SEO local y posicionamiento en buscadores con IA (GEO/AEO) especializada en estudios de pilates.
 
 ## Stack
 

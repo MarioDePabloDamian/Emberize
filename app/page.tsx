@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HashNav from "@/components/HashNav";
 import ScrollProgress from "@/components/ScrollProgress";
+import GlobalVortex from "@/components/GlobalVortex";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Problem from "@/components/Problem";
@@ -15,10 +16,11 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
+      <GlobalVortex />
       <HashNav />
       <ScrollProgress />
       <Navbar />
-      <main className="overflow-x-clip">
+      <main className="relative z-[1] overflow-x-clip">
         <Hero />
         <Marquee />
         <Problem />

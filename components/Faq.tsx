@@ -8,27 +8,31 @@ import SectionHeading from "./SectionHeading";
 const faqs = [
   {
     q: "¿Necesito conocimientos técnicos para usar esto?",
-    a: "No. Nosotros montamos, configuramos y mantenemos todo el sistema. Tú solo ves los resultados: citas en tu calendario, conversaciones resueltas y alumnos nuevos en el tatami.",
+    a: "No. Nosotros montamos, configuramos y mantenemos todo el sistema. Tú solo ves los resultados: reservas en tu calendario, conversaciones resueltas y alumnas nuevas en tus clases.",
   },
   {
-    q: "¿El chatbot sonará robótico con mis alumnos?",
-    a: "Lo entrenamos con el tono de tu escuela: horarios, tarifas, disciplinas, nombres de tus entrenadores y hasta tu forma de hablar. Y cuando una conversación requiere un humano, te la pasa al instante.",
+    q: "¿El chatbot sonará robótico con mis alumnas?",
+    a: "Lo entrenamos con el tono de tu estudio: horarios, tarifas, tipos de clase, nombres de tus instructoras y hasta tu forma de hablar. Y cuando una conversación requiere un humano, te la pasa al instante.",
+  },
+  {
+    q: "¿Qué es eso de SEO, GEO y AEO?",
+    a: "SEO es aparecer en Google cuando buscan “pilates en tu zona”. GEO (Generative Engine Optimization) es que las IAs como ChatGPT, Gemini o Perplexity recomienden tu estudio al preguntarles. AEO (Answer Engine Optimization) es salir como respuesta directa en buscadores. Trabajamos los tres para que te encuentren busquen donde busquen.",
   },
   {
     q: "¿Cuánto se tarda en tenerlo funcionando?",
-    a: "Entre 2 y 4 semanas según el alcance. Empezamos por lo que más impacto tiene (normalmente el chatbot de WhatsApp con agenda de clases de prueba) y ampliamos desde ahí.",
+    a: "La automatización, entre 2 y 4 semanas según el alcance. El SEO es carrera de fondo: los primeros resultados suelen verse en 2-3 meses y crecen con el tiempo. Empezamos por lo que más impacto tiene y ampliamos desde ahí.",
   },
   {
-    q: "¿Funciona para escuelas pequeñas?",
-    a: "Especialmente para ellas. Si eres tú quien da las clases, contesta los mensajes y pasa las cuotas, la automatización te devuelve horas cada semana y evita que se te escape ni un interesado.",
+    q: "¿Funciona para estudios pequeños?",
+    a: "Especialmente para ellos. Si eres tú quien da las clases, contesta los mensajes y pasa las cuotas, la automatización te devuelve horas cada semana y evita que se te escape ni una interesada.",
   },
   {
-    q: "¿Qué pasa con los datos de mis alumnos?",
+    q: "¿Qué pasa con los datos de mis alumnas?",
     a: "Tus datos son tuyos. Trabajamos con herramientas que cumplen el RGPD, con consentimiento explícito en formularios y conversaciones, y puedes exportarlo o eliminarlo todo cuando quieras.",
   },
   {
     q: "¿Cuánto cuesta?",
-    a: "Depende del sistema que necesites. Tras el diagnóstico gratuito te damos un presupuesto cerrado, sin sorpresas. La mayoría de escuelas recuperan la inversión con 2-3 matrículas nuevas.",
+    a: "Depende del sistema que necesites. Tras el diagnóstico gratuito te damos un presupuesto cerrado, sin sorpresas. La mayoría de estudios recuperan la inversión con 2-3 altas nuevas.",
   },
 ];
 

@@ -2,13 +2,36 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Flame, Loader2, CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  ChevronDown,
+  Clock3,
+  Loader2,
+  PenLine,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import VoiceWidgetEmbed from "./VoiceWidgetEmbed";
 
-const services = ["Automatización", "Chatbot IA", "Landing page", "Agente de voz", "No lo tengo claro"];
+const services = [
+  "Automatización",
+  "Chatbot IA",
+  "Landing page",
+  "Agente de voz",
+  "SEO / GEO / AEO",
+  "No lo tengo claro",
+];
 
 const SENT_KEY = "emberize-contact-sent";
+
+const trustPoints = [
+  { icon: Clock3, text: "Respuesta en menos de 24 h" },
+  { icon: ShieldCheck, text: "Sin spam ni compromiso" },
+  { icon: Sparkles, text: "Diagnóstico 100 % gratuito" },
+];
 
 type Status = "idle" | "sending" | "sent";
 
@@ -36,141 +59,193 @@ export default function Contact() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 55% 45% at 50% 60%, rgba(255,107,44,0.10), transparent 70%), radial-gradient(ellipse 60% 40% at 50% 20%, rgba(46,134,245,0.12), transparent 70%)",
+            "radial-gradient(ellipse 55% 45% at 50% 60%, rgba(52,211,153,0.10), transparent 70%), radial-gradient(ellipse 60% 40% at 50% 20%, rgba(46,134,245,0.12), transparent 70%)",
         }}
       />
-      <div className="relative mx-auto max-w-4xl">
+      <div className="relative mx-auto max-w-6xl">
         <SectionHeading
           chapter="Capítulo final — Tu movimiento"
           title={
             <>
-              Enciende tu escuela. <span className="text-ember">Pide tu diagnóstico gratis.</span>
+              Enciende tu estudio. <span className="text-sage">Pide tu diagnóstico gratis.</span>
             </>
           }
-          subtitle="Cuéntanos cómo trabaja tu escuela hoy y te enseñamos, sin compromiso, qué automatizaría la IA por ti. Respondemos en menos de 24 horas."
+          subtitle="Prueba el asistente de voz o cuéntanos por escrito cómo trabaja tu estudio. Te enseñamos, sin compromiso, qué automatizaría la IA por ti y cómo mejorar tu visibilidad en Google."
         />
 
-        <Reveal delay={0.15} className="mt-12">
-          <form
-            name="emberize-diagnostico"
-            method="get"
-            action="#contacto"
-            onSubmit={handleSubmit}
-            className="glass rounded-3xl p-8 sm:p-10"
-          >
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div>
-                <label htmlFor="first_name" className="mb-1.5 block text-sm font-medium text-ink">
-                  Nombre *
-                </label>
-                <input
-                  id="first_name"
-                  name="first_name"
-                  type="text"
-                  required
-                  autoComplete="name"
-                  placeholder="Tu nombre"
-                  className="w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink placeholder:text-ink-muted/60 outline-none transition-colors duration-200 focus:border-flame-bright"
-                />
+        <div className="mt-12 grid items-stretch gap-8 lg:grid-cols-2">
+          <Reveal delay={0.1}>
+            <VoiceWidgetEmbed />
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <form
+              name="emberize-diagnostico"
+              method="get"
+              action="#contacto"
+              onSubmit={handleSubmit}
+              className="relative flex h-full flex-col overflow-hidden rounded-3xl glass"
+            >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-flame/50 to-transparent"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-20 -top-20 h-44 w-44 rounded-full bg-sage/8 blur-3xl"
+              />
+
+              <div className="relative border-b border-line px-6 py-5 sm:px-8">
+                <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-sage/10 px-3 py-1 text-xs font-medium text-sage-bright">
+                  <PenLine className="h-3.5 w-3.5" aria-hidden />
+                  Por escrito
+                </div>
+                <h3 className="font-display text-2xl tracking-wide text-ink">
+                  Solicita tu diagnóstico
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                  Cuéntanos cómo captáis alumnas hoy. Te proponemos qué automatizar y cómo
+                  mejorar tu visibilidad online.
+                </p>
               </div>
-              <div>
-                <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-ink">
-                  Email *
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  placeholder="tu@email.com"
-                  className="w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink placeholder:text-ink-muted/60 outline-none transition-colors duration-200 focus:border-flame-bright"
-                />
-              </div>
-              <div>
-                <label htmlFor="company_name" className="mb-1.5 block text-sm font-medium text-ink">
-                  Nombre de tu escuela
-                </label>
-                <input
-                  id="company_name"
-                  name="company_name"
-                  type="text"
-                  placeholder="Ej. Academia Dragón Azul"
-                  className="w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink placeholder:text-ink-muted/60 outline-none transition-colors duration-200 focus:border-flame-bright"
-                />
-              </div>
-              <div>
-                <label htmlFor="servicio" className="mb-1.5 block text-sm font-medium text-ink">
-                  ¿Qué te interesa? *
-                </label>
-                <select
-                  id="servicio"
-                  name="servicio"
-                  required
-                  defaultValue=""
-                  className="w-full cursor-pointer rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink outline-none transition-colors duration-200 focus:border-flame-bright"
-                >
-                  <option value="" disabled>
-                    Elige un servicio
-                  </option>
-                  {services.map((s) => (
-                    <option key={s} value={s}>
-                      {s}
-                    </option>
+
+              <div className="relative flex flex-1 flex-col px-6 py-6 sm:px-8 sm:py-7">
+                <ul className="mb-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-5 sm:gap-y-2">
+                  {trustPoints.map(({ icon: Icon, text }) => (
+                    <li
+                      key={text}
+                      className="flex items-center gap-2 text-xs text-ink-muted"
+                    >
+                      <Icon className="h-3.5 w-3.5 shrink-0 text-sage" aria-hidden />
+                      {text}
+                    </li>
                   ))}
-                </select>
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-ink">
-                  Cuéntanos tu situación *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={4}
-                  placeholder="Ej. Tenemos unos 80 alumnos de BJJ y boxeo, recibimos consultas por Instagram y WhatsApp pero se nos escapan muchas..."
-                  className="w-full resize-y rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink placeholder:text-ink-muted/60 outline-none transition-colors duration-200 focus:border-flame-bright"
-                />
-              </div>
-            </div>
+                </ul>
 
-            <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-              <p className="text-xs text-ink-muted">
-                Al enviar aceptas que usemos tus datos solo para responderte. Nada de spam.
-              </p>
-              <motion.button
-                type="submit"
-                disabled={status === "sending"}
-                whileHover={{ scale: status === "sending" ? 1 : 1.04 }}
-                whileTap={{ scale: status === "sending" ? 1 : 0.97 }}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ember px-8 py-3.5 text-base font-bold text-night glow-ember transition-colors duration-200 hover:bg-ember-bright disabled:opacity-60 sm:w-auto cursor-pointer"
-              >
-                {status === "sending" ? (
-                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
-                ) : (
-                  <Flame className="h-4 w-4" aria-hidden />
-                )}
-                {status === "sending" ? "Enviando..." : "Solicitar diagnóstico gratis"}
-              </motion.button>
-            </div>
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="first_name" className="mb-1.5 block text-sm font-medium text-ink">
+                      Nombre <span className="text-sage">*</span>
+                    </label>
+                    <input
+                      id="first_name"
+                      name="first_name"
+                      type="text"
+                      required
+                      autoComplete="name"
+                      placeholder="Tu nombre"
+                      className="form-input"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-ink">
+                      Email <span className="text-sage">*</span>
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      autoComplete="email"
+                      placeholder="tu@email.com"
+                      className="form-input"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="company_name"
+                      className="mb-1.5 block text-sm font-medium text-ink"
+                    >
+                      Nombre de tu estudio
+                    </label>
+                    <input
+                      id="company_name"
+                      name="company_name"
+                      type="text"
+                      placeholder="Ej. Estudio Equilibrio Pilates"
+                      className="form-input"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="servicio" className="mb-1.5 block text-sm font-medium text-ink">
+                      ¿Qué te interesa? <span className="text-sage">*</span>
+                    </label>
+                    <div className="relative">
+                      <select
+                        id="servicio"
+                        name="servicio"
+                        required
+                        defaultValue=""
+                        className="form-input cursor-pointer appearance-none pr-10"
+                      >
+                        <option value="" disabled>
+                          Elige un servicio
+                        </option>
+                        {services.map((s) => (
+                          <option key={s} value={s}>
+                            {s}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown
+                        className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted"
+                        aria-hidden
+                      />
+                    </div>
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-ink">
+                      Cuéntanos tu situación <span className="text-sage">*</span>
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={4}
+                      placeholder="Ej. Tenemos dos salas de reformer con unas 90 alumnas, recibimos consultas por Instagram y WhatsApp pero se nos escapan muchas..."
+                      className="form-textarea"
+                    />
+                  </div>
+                </div>
 
-            <AnimatePresence>
-              {status === "sent" && (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  role="status"
-                  className="mt-5 flex items-center gap-2 rounded-xl bg-flame/10 px-4 py-3 text-sm text-flame-bright"
-                >
-                  <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden />
-                  Recibido. Te contactamos en menos de 24 horas para agendar tu diagnóstico.
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </form>
-        </Reveal>
+                <div className="mt-7 border-t border-line pt-6">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="max-w-xs text-xs leading-relaxed text-ink-muted">
+                      Al enviar aceptas que usemos tus datos solo para responderte. Nada de spam.
+                    </p>
+                    <button
+                      type="submit"
+                      disabled={status === "sending"}
+                      className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-flame px-8 py-3.5 text-base font-bold text-white glow-flame transition-colors duration-200 hover:bg-flame-bright disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto cursor-pointer"
+                    >
+                      {status === "sending" ? (
+                        <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
+                      ) : (
+                        <ArrowRight className="h-4 w-4" aria-hidden />
+                      )}
+                      {status === "sending" ? "Enviando..." : "Solicitar diagnóstico gratis"}
+                    </button>
+                  </div>
+
+                  <AnimatePresence>
+                    {status === "sent" && (
+                      <motion.p
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        role="status"
+                        className="mt-5 flex items-center gap-2 rounded-xl border border-sage/25 bg-sage/10 px-4 py-3 text-sm text-sage-bright"
+                      >
+                        <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden />
+                        Recibido. Te contactamos en menos de 24 horas para agendar tu diagnóstico.
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+            </form>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

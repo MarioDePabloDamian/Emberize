@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-surface px-6 py-10">
+    <footer className="border-t border-line bg-black px-6 py-10">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 sm:flex-row">
         <div className="flex items-center gap-2.5">
           <Image src="/logo.png" alt="Logo de Emberize" width={32} height={32} />
@@ -12,7 +12,7 @@ export default function Footer() {
         </div>
 
         <p className="text-center text-xs text-ink-muted">
-          IA para escuelas de artes marciales y deportes de contacto.
+          IA, SEO y automatización para estudios de pilates.
           <br className="sm:hidden" /> © {new Date().getFullYear()} Emberize. Todos los derechos reservados.
         </p>
 

@@ -71,7 +71,7 @@ export default function Navbar() {
             href="#contacto"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            className="hidden sm:inline-flex items-center rounded-xl bg-ember px-5 py-2.5 text-sm font-semibold text-night transition-colors duration-200 hover:bg-ember-bright cursor-pointer"
+            className="hidden sm:inline-flex items-center rounded-xl bg-sage px-5 py-2.5 text-sm font-semibold text-night transition-colors duration-200 hover:bg-sage-bright cursor-pointer"
           >
             Agenda una demo
           </motion.a>
@@ -111,7 +111,7 @@ export default function Navbar() {
               <a
                 href="#contacto"
                 onClick={menuClick("#contacto")}
-                className="mt-1 block rounded-lg bg-ember px-3 py-2.5 text-center text-sm font-semibold text-night"
+                className="mt-1 block rounded-lg bg-sage px-3 py-2.5 text-center text-sm font-semibold text-night"
               >
                 Agenda una demo
               </a>

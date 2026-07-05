@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Bebas_Neue, DM_Sans } from "next/font/google";
+import { Lora, DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const bebas = Bebas_Neue({
-  variable: "--font-bebas",
-  weight: "400",
+const lora = Lora({
+  variable: "--font-lora",
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -18,9 +18,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://emberize.es";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Emberize — IA para Escuelas de Artes Marciales",
+  title: "Emberize — IA y SEO para Estudios de Pilates",
   description:
-    "Agencia de automatización con IA especializada en escuelas de artes marciales y deportes de contacto. Automatización, chatbots, landing pages y agentes de voz que llenan tu tatami.",
+    "Agencia de automatización con IA especializada en estudios de pilates. Chatbots, agentes de voz, landing pages, SEO local y posicionamiento en buscadores con IA (GEO/AEO) que llenan tus clases.",
   alternates: {
     canonical: "/",
   },
@@ -29,15 +29,34 @@ export const metadata: Metadata = {
     apple: "/apple-icon.png",
   },
   openGraph: {
-    title: "Emberize — IA para Escuelas de Artes Marciales",
+    title: "Emberize — IA y SEO para Estudios de Pilates",
     description:
-      "Automatiza la captación y gestión de alumnos de tu escuela con IA: chatbots, voz, landing pages y flujos automáticos.",
+      "Automatiza la captación y gestión de alumnos de tu estudio de pilates con IA: chatbots, voz, landing pages, SEO local y GEO/AEO.",
     url: siteUrl,
     siteName: "Emberize",
     locale: "es_ES",
     type: "website",
     images: [{ url: "/logo.png", alt: "Emberize" }],
   },
+};
+
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Emberize",
+  url: siteUrl,
+  logo: `${siteUrl}/logo.png`,
+  description:
+    "Agencia de automatización con IA, SEO local y optimización para buscadores con IA (GEO/AEO) especializada en estudios de pilates.",
+  areaServed: "ES",
+  knowsAbout: [
+    "Automatización con IA para estudios de pilates",
+    "Chatbots y agentes de voz",
+    "Landing pages de captación",
+    "SEO local",
+    "GEO (Generative Engine Optimization)",
+    "AEO (Answer Engine Optimization)",
+  ],
 };
 
 export default function RootLayout({
@@ -48,9 +67,13 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${bebas.variable} ${dmSans.variable} antialiased scroll-smooth scroll-pt-22 scrollbar-none`}
+      className={`${lora.variable} ${dmSans.variable} antialiased scroll-smooth scroll-pt-22 scrollbar-none bg-night`}
     >
       <body className="bg-night text-ink font-sans scrollbar-none selection:bg-flame selection:text-white">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }}
+        />
         <Script id="hash-nav" strategy="beforeInteractive">
           {`(function(){try{history.scrollRestoration="manual"}catch(e){}function s(){var h=location.hash;if(!h)return;var e=document.querySelector(h);if(!e)return;var t=e.getBoundingClientRect().top+scrollY-88;scrollTo({top:t,behavior:"instant"})}addEventListener("hashchange",s);function r(){s();setTimeout(s,0);setTimeout(s,100);setTimeout(s,300)}addEventListener("DOMContentLoaded",r);addEventListener("load",r)})();`}
         </Script>
@@ -58,12 +81,6 @@ export default function RootLayout({
         <Script
           src="https://link.msgsndr.com/js/external-tracking.js"
           data-tracking-id="tk_15fc8c0b0a794e1e99062d7ab7604771"
-          strategy="afterInteractive"
-        />
-        <Script
-          src="https://widgets.leadconnectorhq.com/loader.js"
-          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-          data-widget-id="6a47ed011cded9008ad72ce2"
           strategy="afterInteractive"
         />
       </body>

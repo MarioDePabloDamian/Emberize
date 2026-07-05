@@ -1,14 +1,14 @@
 const disciplines = [
-  "Brazilian Jiu-Jitsu",
-  "Muay Thai",
-  "Boxeo",
-  "MMA",
-  "Judo",
-  "Karate",
-  "Taekwondo",
-  "Kickboxing",
-  "Krav Maga",
-  "Lucha Libre Olímpica",
+  "Pilates Reformer",
+  "Pilates Mat",
+  "Pilates Clínico",
+  "Barre",
+  "Pilates Prenatal",
+  "Core & Flexibilidad",
+  "Pilates Suelo",
+  "Stretching",
+  "Yoga & Pilates",
+  "Wellness",
 ];
 
 export default function Marquee() {
@@ -17,7 +17,7 @@ export default function Marquee() {
   return (
     <div
       aria-hidden
-      className="relative overflow-hidden border-y border-line bg-surface py-4"
+      className="relative overflow-hidden border-y border-line py-4"
     >
       <div className="animate-marquee motion-reduce:animate-none flex w-max items-center gap-10">
         {row.map((d, i) => (
@@ -26,7 +26,7 @@ export default function Marquee() {
             className="flex items-center gap-10 whitespace-nowrap font-display text-xl tracking-widest text-ink-muted/70"
           >
             {d}
-            <span className="text-ember">✦</span>
+            <span className="text-sage">✦</span>
           </span>
         ))}
       </div>

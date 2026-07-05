@@ -37,6 +37,8 @@ jobs:
         run: pnpm build
         env:
           NEXT_PUBLIC_SITE_URL: https://emberize.es
+          NEXT_PUBLIC_GHL_WIDGET_ID: ${{ secrets.GHL_WIDGET_ID }}
+          NEXT_PUBLIC_GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
 
       - name: Verify static output
         run: test -f out/index.html && test -f out/CNAME
