@@ -46,6 +46,13 @@
   border: 1px solid rgba(148, 163, 199, 0.14);
 }
 
+@media (max-width: 768px) {
+  .glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
 @utility text-glow-blue {
   text-shadow: 0 0 24px rgba(46, 134, 245, 0.55);
 }
@@ -126,7 +133,29 @@
   }
 }
 
+.emberize-voice-widget-host {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 .emberize-voice-widget-host chat-widget {
   display: block;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+  .emberize-voice-widget-host chat-widget {
+    transform: scale(0.94);
+    transform-origin: top center;
+  }
+
+  .form-input,
+  .form-textarea {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
 }

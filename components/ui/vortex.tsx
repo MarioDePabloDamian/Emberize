@@ -21,6 +21,7 @@ interface VortexProps {
   baseRadius?: number;
   rangeRadius?: number;
   backgroundColor?: string;
+  enableGlow?: boolean;
 }
 
 export const Vortex = (props: VortexProps) => {
@@ -48,6 +49,7 @@ export const Vortex = (props: VortexProps) => {
   const yOff = 0.00125;
   const zOff = 0.0005;
   const backgroundColor = props.backgroundColor || "#000000";
+  const enableGlow = props.enableGlow ?? true;
   let tick = 0;
   const noise3D = createNoise3D();
   let particleProps = new Float32Array(particlePropsLength);
@@ -129,8 +131,11 @@ export const Vortex = (props: VortexProps) => {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     drawParticles(ctx);
-    renderGlow(canvas, ctx);
-    renderToScreen(canvas, ctx);
+
+    if (enableGlow) {
+      renderGlow(canvas, ctx);
+      renderToScreen(canvas, ctx);
+    }
 
     animationFrameId.current = window.requestAnimationFrame(() =>
       draw(canvas, ctx),
@@ -260,10 +265,28 @@ export const Vortex = (props: VortexProps) => {
 
   useEffect(() => {
     setup();
+
+    const handleVisibility = () => {
+      if (document.hidden) {
+        if (animationFrameId.current) {
+          cancelAnimationFrame(animationFrameId.current);
+          animationFrameId.current = undefined;
+        }
+      } else {
+        const canvas = canvasRef.current;
+        const ctx = canvas?.getContext("2d");
+        if (canvas && ctx && !animationFrameId.current) {
+          draw(canvas, ctx);
+        }
+      }
+    };
+
     window.addEventListener("resize", handleResize);
+    document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", handleVisibility);
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }

@@ -1,20 +1,31 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px), (pointer: coarse)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  const lightMotion = reduce || isMobile;
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
 
-  const yLogo = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -120]);
-  const yText = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 80]);
+  const yLogo = useTransform(scrollYProgress, [0, 1], [0, lightMotion ? 0 : -120]);
+  const yText = useTransform(scrollYProgress, [0, 1], [0, lightMotion ? 0 : 80]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
@@ -32,7 +43,7 @@ export default function Hero() {
 
       <motion.div style={{ y: yLogo, opacity }} className="relative">
         <motion.div
-          animate={reduce ? {} : { y: [0, -10, 0] }}
+          animate={lightMotion ? {} : { y: [0, -10, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
           <Image
@@ -112,7 +123,7 @@ export default function Hero() {
         href="#problema"
         aria-label="Bajar a la siguiente sección"
         style={{ opacity }}
-        animate={reduce ? {} : { y: [0, 8, 0] }}
+        animate={lightMotion ? {} : { y: [0, 8, 0] }}
         transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
         className="absolute bottom-8 text-ink-muted hover:text-ink transition-colors duration-200 cursor-pointer"
       >

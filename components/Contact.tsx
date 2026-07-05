@@ -53,7 +53,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contacto" className="relative scroll-mt-22 px-6 py-24 sm:py-32">
+    <section id="contacto" className="relative scroll-mt-22 px-4 py-20 sm:px-6 sm:py-24 lg:py-32">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -62,7 +62,7 @@ export default function Contact() {
             "radial-gradient(ellipse 55% 45% at 50% 60%, rgba(52,211,153,0.10), transparent 70%), radial-gradient(ellipse 60% 40% at 50% 20%, rgba(46,134,245,0.12), transparent 70%)",
         }}
       />
-      <div className="relative mx-auto max-w-6xl">
+      <div className="relative mx-auto w-full min-w-0 max-w-6xl">
         <SectionHeading
           chapter="Capítulo final — Tu movimiento"
           title={
@@ -73,18 +73,18 @@ export default function Contact() {
           subtitle="Prueba el asistente de voz o cuéntanos por escrito cómo trabaja tu estudio. Te enseñamos, sin compromiso, qué automatizaría la IA por ti y cómo mejorar tu visibilidad en Google."
         />
 
-        <div className="mt-12 grid items-stretch gap-8 lg:grid-cols-2">
-          <Reveal delay={0.1}>
+        <div className="mt-10 grid w-full min-w-0 grid-cols-1 items-stretch gap-6 sm:mt-12 sm:gap-8 lg:grid-cols-2">
+          <Reveal delay={0.1} className="min-w-0 w-full">
             <VoiceWidgetEmbed />
           </Reveal>
 
-          <Reveal delay={0.15}>
+          <Reveal delay={0.15} className="min-w-0 w-full">
             <form
               name="emberize-diagnostico"
               method="get"
               action="#contacto"
               onSubmit={handleSubmit}
-              className="relative flex h-full flex-col overflow-hidden rounded-3xl glass"
+              className="relative flex h-full min-w-0 flex-col overflow-hidden rounded-3xl glass"
             >
               <div
                 aria-hidden
@@ -95,12 +95,12 @@ export default function Contact() {
                 className="pointer-events-none absolute -right-20 -top-20 h-44 w-44 rounded-full bg-sage/8 blur-3xl"
               />
 
-              <div className="relative border-b border-line px-6 py-5 sm:px-8">
+              <div className="relative border-b border-line px-4 py-5 sm:px-8">
                 <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-sage/10 px-3 py-1 text-xs font-medium text-sage-bright">
                   <PenLine className="h-3.5 w-3.5" aria-hidden />
                   Por escrito
                 </div>
-                <h3 className="font-display text-2xl tracking-wide text-ink">
+                <h3 className="font-display text-xl tracking-wide text-ink sm:text-2xl">
                   Solicita tu diagnóstico
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-muted">
@@ -109,8 +109,8 @@ export default function Contact() {
                 </p>
               </div>
 
-              <div className="relative flex flex-1 flex-col px-6 py-6 sm:px-8 sm:py-7">
-                <ul className="mb-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-5 sm:gap-y-2">
+              <div className="relative flex min-w-0 flex-1 flex-col px-4 py-6 sm:px-8 sm:py-7">
+                <ul className="mb-6 flex flex-col gap-2 md:flex-row md:flex-wrap md:gap-x-5 md:gap-y-2">
                   {trustPoints.map(({ icon: Icon, text }) => (
                     <li
                       key={text}
@@ -122,7 +122,7 @@ export default function Contact() {
                   ))}
                 </ul>
 
-                <div className="grid gap-5 sm:grid-cols-2">
+                <div className="grid min-w-0 grid-cols-1 gap-5 md:grid-cols-2">
                   <div>
                     <label htmlFor="first_name" className="mb-1.5 block text-sm font-medium text-ink">
                       Nombre <span className="text-sage">*</span>
@@ -193,7 +193,7 @@ export default function Contact() {
                       />
                     </div>
                   </div>
-                  <div className="sm:col-span-2">
+                  <div className="md:col-span-2">
                     <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-ink">
                       Cuéntanos tu situación <span className="text-sage">*</span>
                     </label>
@@ -209,21 +209,28 @@ export default function Contact() {
                 </div>
 
                 <div className="mt-7 border-t border-line pt-6">
-                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                     <p className="max-w-xs text-xs leading-relaxed text-ink-muted">
                       Al enviar aceptas que usemos tus datos solo para responderte. Nada de spam.
                     </p>
                     <button
                       type="submit"
                       disabled={status === "sending"}
-                      className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-flame px-8 py-3.5 text-base font-bold text-white glow-flame transition-colors duration-200 hover:bg-flame-bright disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto cursor-pointer"
+                      className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-flame px-6 py-3.5 text-sm font-bold text-white glow-flame transition-colors duration-200 hover:bg-flame-bright disabled:cursor-not-allowed disabled:opacity-60 sm:px-8 sm:text-base md:w-auto cursor-pointer"
                     >
                       {status === "sending" ? (
                         <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
                       ) : (
-                        <ArrowRight className="h-4 w-4" aria-hidden />
+                        <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
                       )}
-                      {status === "sending" ? "Enviando..." : "Solicitar diagnóstico gratis"}
+                      {status === "sending" ? (
+                        "Enviando..."
+                      ) : (
+                        <>
+                          <span className="md:hidden">Solicitar diagnóstico</span>
+                          <span className="hidden md:inline">Solicitar diagnóstico gratis</span>
+                        </>
+                      )}
                     </button>
                   </div>
 

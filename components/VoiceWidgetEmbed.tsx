@@ -29,13 +29,13 @@ export default function VoiceWidgetEmbed() {
   }, []);
 
   return (
-    <div className="glass flex h-full flex-col rounded-3xl">
-      <div className="border-b border-line px-6 py-5 sm:px-8">
+    <div className="glass flex h-full min-w-0 flex-col overflow-hidden rounded-3xl">
+      <div className="border-b border-line px-4 py-5 sm:px-8">
         <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-flame/10 px-3 py-1 text-xs font-medium text-flame-bright">
           <Mic className="h-3.5 w-3.5" aria-hidden />
           Demo en vivo
         </div>
-        <h3 className="font-display text-2xl tracking-wide text-ink">
+        <h3 className="font-display text-xl tracking-wide text-ink sm:text-2xl">
           Habla con el asistente de Emberize
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-ink-muted">
@@ -45,7 +45,7 @@ export default function VoiceWidgetEmbed() {
       </div>
       <div
         ref={containerRef}
-        className="emberize-voice-widget-host relative min-h-[420px] flex-1 overflow-visible bg-surface/40 pb-2 sm:min-h-[440px]"
+        className="emberize-voice-widget-host relative min-h-[300px] flex-1 overflow-hidden bg-surface/40 px-1 pb-2 sm:min-h-[380px] sm:px-0 lg:min-h-[440px]"
         aria-label="Asistente de voz Emberize"
       />
     </div>
