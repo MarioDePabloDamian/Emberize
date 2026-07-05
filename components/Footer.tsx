@@ -1,11 +1,11 @@
-import Image from "next/image";
+import BrandLogo from "./BrandLogo";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-black px-6 py-10">
+    <footer className="relative z-[1] border-t border-line bg-night px-6 py-10">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 sm:flex-row">
         <div className="flex items-center gap-2.5">
-          <Image src="/logo.png" alt="Logo de Emberize" width={32} height={32} />
+          <BrandLogo alt="Logo de Emberize" width={32} height={32} />
           <span className="font-display text-xl tracking-wider text-ink">
             EMBER<span className="text-flame-bright">IZE</span>
           </span>

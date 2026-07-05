@@ -53,7 +53,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contacto" className="relative scroll-mt-22 px-4 py-20 sm:px-6 sm:py-24 lg:py-32">
+    <section id="contacto" className="cv-auto relative scroll-mt-22 px-4 py-20 sm:px-6 sm:py-24 lg:py-32">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"

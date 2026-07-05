@@ -1,24 +1,15 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import BrandLogo from "./BrandLogo";
+import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
+import { useLightMotion } from "@/lib/use-light-motion";
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
+  const lightMotion = useLightMotion();
   const reduce = useReducedMotion();
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 768px), (pointer: coarse)");
-    const update = () => setIsMobile(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-
-  const lightMotion = reduce || isMobile;
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -46,8 +37,7 @@ export default function Hero() {
           animate={lightMotion ? {} : { y: [0, -10, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <Image
-            src="/logo.png"
+          <BrandLogo
             alt=""
             width={150}
             height={150}

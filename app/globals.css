@@ -39,6 +39,11 @@
   }
 }
 
+@utility cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
+}
+
 @utility glass {
   background: rgba(11, 18, 38, 0.72);
   backdrop-filter: blur(16px);

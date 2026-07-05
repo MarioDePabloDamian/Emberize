@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Search, PencilRuler, Rocket, LineChart } from "lucide-react";
 import SectionHeading from "./SectionHeading";
+import { useLightMotion } from "@/lib/use-light-motion";
 
 const steps = [
   {
@@ -34,6 +35,7 @@ const steps = [
 
 export default function Process() {
   const ref = useRef<HTMLDivElement>(null);
+  const lightMotion = useLightMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 70%", "end 60%"],
@@ -41,7 +43,7 @@ export default function Process() {
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section id="metodo" className="relative scroll-mt-22 px-6 py-24 sm:py-32">
+    <section id="metodo" className="cv-auto relative scroll-mt-22 px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-5xl">
         <SectionHeading
           chapter="Capítulo 03 — El método"
@@ -54,12 +56,15 @@ export default function Process() {
         />
 
         <div ref={ref} className="relative mt-16">
-          {/* Línea de progreso que se dibuja con el scroll */}
           <div className="absolute left-6 top-0 bottom-0 w-px bg-line sm:left-1/2" aria-hidden>
-            <motion.div
-              className="h-full w-full origin-top bg-gradient-to-b from-flame-bright via-flame to-sage"
-              style={{ scaleY: lineScale }}
-            />
+            {lightMotion ? (
+              <div className="h-full w-full bg-gradient-to-b from-flame-bright via-flame to-sage" />
+            ) : (
+              <motion.div
+                className="h-full w-full origin-top bg-gradient-to-b from-flame-bright via-flame to-sage"
+                style={{ scaleY: lineScale }}
+              />
+            )}
           </div>
 
           <ol className="space-y-14">

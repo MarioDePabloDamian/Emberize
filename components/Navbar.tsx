@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import BrandLogo from "./BrandLogo";
 import { useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
@@ -40,8 +40,7 @@ export default function Navbar() {
     >
       <nav className="flex items-center justify-between" aria-label="Principal">
         <a href="#inicio" className="flex items-center gap-2.5 cursor-pointer group">
-          <Image
-            src="/logo.png"
+          <BrandLogo
             alt="Logo de Emberize, flor de loto en llamas azules"
             width={40}
             height={40}

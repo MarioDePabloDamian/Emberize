@@ -41,7 +41,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export default function Stats() {
   return (
-    <section className="relative border-y border-line px-6 py-16">
+    <section className="cv-auto relative border-y border-line px-6 py-16">
       <div className="mx-auto grid max-w-6xl gap-10 text-center sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((s, i) => (
           <motion.div

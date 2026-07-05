@@ -3,14 +3,18 @@
 import { useEffect, useRef } from "react";
 import { Mic } from "lucide-react";
 import { isAllowedWidgetHost } from "@/lib/voice-widget-allowlist";
+import { useInViewport } from "@/lib/use-in-viewport";
 
 const WIDGET_ID = process.env.NEXT_PUBLIC_GHL_WIDGET_ID;
 const LOCATION_ID = process.env.NEXT_PUBLIC_GHL_LOCATION_ID;
 
 export default function VoiceWidgetEmbed() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const inView = useInViewport(containerRef, { once: true, rootMargin: "240px" });
 
   useEffect(() => {
+    if (!inView) return;
+
     const container = containerRef.current;
     if (!container || container.querySelector("script[data-widget-id]")) return;
     if (!isAllowedWidgetHost(window.location.hostname)) return;
@@ -26,7 +30,7 @@ export default function VoiceWidgetEmbed() {
     script.setAttribute("data-location-id", LOCATION_ID);
     script.setAttribute("data-widget-placement", "embedded");
     container.appendChild(script);
-  }, []);
+  }, [inView]);
 
   return (
     <div className="glass flex h-full min-w-0 flex-col overflow-hidden rounded-3xl">

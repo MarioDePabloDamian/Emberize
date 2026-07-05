@@ -27,7 +27,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="relative px-6 py-24 sm:py-32">
+    <section className="cv-auto relative px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           chapter="Capítulo 04 — La prueba"
