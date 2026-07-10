@@ -19,17 +19,17 @@ export default function Footer() {
         <nav aria-label="Pie de página">
           <ul className="flex items-center gap-5 text-xs text-ink-muted">
             <li>
-              <a href="#servicios" className="hover:text-ink transition-colors duration-200">
+              <a href="#servicios" className="cursor-pointer hover:text-ink transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright">
                 Servicios
               </a>
             </li>
             <li>
-              <a href="#faq" className="hover:text-ink transition-colors duration-200">
+              <a href="#faq" className="cursor-pointer hover:text-ink transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright">
                 FAQ
               </a>
             </li>
             <li>
-              <a href="#contacto" className="hover:text-ink transition-colors duration-200">
+              <a href="#contacto" className="cursor-pointer hover:text-ink transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright">
                 Contacto
               </a>
             </li>

@@ -115,7 +115,7 @@ export default function Hero() {
         style={{ opacity }}
         animate={lightMotion ? {} : { y: [0, 8, 0] }}
         transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-8 text-ink-muted hover:text-ink transition-colors duration-200 cursor-pointer"
+        className="absolute bottom-8 cursor-pointer text-ink-muted hover:text-ink transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright"
       >
         <ChevronDown className="h-6 w-6" />
       </motion.a>

@@ -138,24 +138,19 @@
   }
 }
 
-.emberize-voice-widget-host {
-  width: 100%;
-  min-width: 0;
-  max-width: 100%;
-  overflow-x: clip;
-}
-
+/* GHL inyecta <chat-widget>; no se puede estilizar con className en JSX */
 .emberize-voice-widget-host chat-widget {
   display: block;
   width: 100%;
   max-width: 100%;
+  margin-inline: auto;
   box-sizing: border-box;
 }
 
 @media (max-width: 767px) {
   .emberize-voice-widget-host chat-widget {
     transform: scale(0.94);
-    transform-origin: top center;
+    transform-origin: center;
   }
 
   .form-input,

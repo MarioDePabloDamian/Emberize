@@ -57,7 +57,7 @@ export default function Navbar() {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="relative text-sm text-ink-muted hover:text-ink transition-colors duration-200 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-flame-bright after:transition-all after:duration-300 hover:after:w-full"
+                className="relative cursor-pointer text-sm text-ink-muted hover:text-ink transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-flame-bright after:transition-all after:duration-300 hover:after:w-full"
               >
                 {l.label}
               </a>
@@ -100,7 +100,7 @@ export default function Navbar() {
                 <a
                   href={l.href}
                   onClick={menuClick(l.href)}
-                  className="block rounded-lg px-3 py-2.5 text-sm text-ink-muted hover:text-ink hover:bg-surface-2 transition-colors duration-200"
+                  className="block cursor-pointer rounded-lg px-3 py-2.5 text-sm text-ink-muted hover:text-ink hover:bg-surface-2 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright"
                 >
                   {l.label}
                 </a>

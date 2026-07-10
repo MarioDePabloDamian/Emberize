@@ -5,7 +5,7 @@ const DEFAULT_ALLOWED_HOSTS = [
   "127.0.0.1",
 ];
 
-export function getAllowedWidgetHosts(): string[] {
+function getAllowedWidgetHosts(): string[] {
   const fromEnv = process.env.NEXT_PUBLIC_ALLOWED_WIDGET_HOSTS?.split(",")
     .map((host) => host.trim().toLowerCase())
     .filter(Boolean);

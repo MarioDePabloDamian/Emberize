@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { useInViewport } from "@/lib/use-in-viewport";
+import { useInView } from "motion/react";
 
 const disciplines = [
   "Pilates Reformer",
@@ -18,7 +18,7 @@ const disciplines = [
 
 export default function Marquee() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInViewport(ref, { rootMargin: "80px" });
+  const inView = useInView(ref, { margin: "80px" });
   const row = [...disciplines, ...disciplines];
 
   return (

@@ -74,9 +74,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }}
         />
-        <Script id="hash-nav" strategy="beforeInteractive">
-          {`(function(){try{history.scrollRestoration="manual"}catch(e){}function s(){var h=location.hash;if(!h)return;var e=document.querySelector(h);if(!e)return;var t=e.getBoundingClientRect().top+scrollY-88;scrollTo({top:t,behavior:"instant"})}addEventListener("hashchange",s);function r(){s();setTimeout(s,0);setTimeout(s,100);setTimeout(s,300)}addEventListener("DOMContentLoaded",r);addEventListener("load",r)})();`}
-        </Script>
         {children}
         <Script
           src="https://link.msgsndr.com/js/external-tracking.js"
