@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import {
+  AlertCircle,
   ArrowRight,
+  Check,
   CheckCircle2,
   ChevronDown,
   Clock3,
@@ -14,6 +16,7 @@ import {
 } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import Collapse, { layoutEaseTransition } from "./Collapse";
 import VoiceWidgetEmbed from "./VoiceWidgetEmbed";
 
 const services = [
@@ -37,6 +40,8 @@ type Status = "idle" | "sending" | "sent";
 
 export default function Contact() {
   const [status, setStatus] = useState<Status>("idle");
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [privacyError, setPrivacyError] = useState(false);
 
   useEffect(() => {
     if (sessionStorage.getItem(SENT_KEY) === "1") {
@@ -46,7 +51,19 @@ export default function Contact() {
     }
   }, []);
 
-  function handleSubmit() {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    const consent = e.currentTarget.elements.namedItem(
+      "privacy_consent",
+    ) as HTMLInputElement | null;
+
+    if (!consent?.checked) {
+      e.preventDefault();
+      setPrivacyError(true);
+      consent?.focus();
+      return;
+    }
+
+    setPrivacyError(false);
     // Sin preventDefault: el script de GoHighLevel captura el submit nativo del formulario.
     sessionStorage.setItem(SENT_KEY, "1");
     setStatus("sending");
@@ -73,13 +90,19 @@ export default function Contact() {
           subtitle="Prueba el asistente de voz o cuéntanos por escrito cómo trabaja tu estudio. Te enseñamos, sin compromiso, qué automatizaría la IA por ti y cómo mejorar tu visibilidad en Google."
         />
 
-        <div className="mt-10 grid w-full min-w-0 grid-cols-1 items-stretch gap-6 sm:mt-12 sm:gap-8 lg:grid-cols-2">
-          <Reveal delay={0.1} className="min-w-0 w-full">
+        <motion.div
+          layout
+          transition={layoutEaseTransition}
+          className="mt-10 grid w-full min-w-0 grid-cols-1 items-stretch gap-6 sm:mt-12 sm:gap-8 lg:grid-cols-2"
+        >
+          <Reveal layout delay={0.1} className="min-w-0 w-full">
             <VoiceWidgetEmbed />
           </Reveal>
 
-          <Reveal delay={0.15} className="min-w-0 w-full">
-            <form
+          <Reveal layout delay={0.15} className="min-w-0 w-full">
+            <motion.form
+              layout
+              transition={layoutEaseTransition}
               name="emberize-diagnostico"
               method="get"
               action="#contacto"
@@ -208,16 +231,74 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="mt-7 border-t border-line pt-6">
-                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                    <p className="max-w-xs text-xs leading-relaxed text-ink-muted">
-                      Al enviar aceptas que usemos tus datos solo para responderte. Nada de spam.
-                    </p>
-                    <button
-                      type="submit"
-                      disabled={status === "sending"}
-                      className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-flame px-6 py-3.5 text-sm font-bold text-white glow-flame transition-colors duration-200 hover:bg-flame-bright disabled:cursor-not-allowed disabled:opacity-60 sm:px-8 sm:text-base md:w-auto cursor-pointer"
+                <div className="mt-6 flex flex-col items-center gap-2">
+                  <div
+                    className={`w-full max-w-md rounded-2xl border px-4 py-4 transition-colors duration-200 ${
+                      privacyError
+                        ? "border-flame/40 bg-flame/5"
+                        : privacyAccepted
+                          ? "border-sage/30 bg-sage/5"
+                          : "border-line bg-surface/25 hover:border-sage/20"
+                    }`}
+                  >
+                    <label
+                      htmlFor="privacy_consent"
+                      className="flex cursor-pointer items-center justify-center gap-3 text-center text-sm leading-relaxed text-ink-muted"
                     >
+                      <input
+                        id="privacy_consent"
+                        name="privacy_consent"
+                        type="checkbox"
+                        value="accepted"
+                        checked={privacyAccepted}
+                        onChange={(e) => {
+                          setPrivacyAccepted(e.target.checked);
+                          if (e.target.checked) setPrivacyError(false);
+                        }}
+                        className="peer sr-only"
+                      />
+                      <span
+                        aria-hidden
+                        className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-line bg-surface/60 transition-colors duration-200 peer-checked:border-sage peer-checked:bg-sage/20 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-flame-bright"
+                      >
+                        <Check
+                          className={`h-3.5 w-3.5 text-sage transition-opacity duration-200 ${privacyAccepted ? "opacity-100" : "opacity-0"}`}
+                        />
+                      </span>
+                      <ShieldCheck
+                        className={`h-4 w-4 shrink-0 transition-colors duration-200 ${privacyAccepted ? "text-sage" : "text-ink-muted"}`}
+                        aria-hidden
+                      />
+                      <span>
+                        He leído y acepto la{" "}
+                        <a
+                          href="/privacidad/"
+                          onClick={(e) => e.stopPropagation()}
+                          className="cursor-pointer text-flame-bright underline transition-colors duration-200 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright"
+                        >
+                          política de privacidad
+                        </a>
+                        .
+                      </span>
+                    </label>
+                  </div>
+                </div>
+
+                <div className="mt-7 border-t border-line pt-6">
+                  <Collapse open={privacyError}>
+                    <p
+                      role="alert"
+                      className="mb-4 flex items-start gap-2 rounded-xl border border-flame/30 bg-flame/10 px-4 py-3 text-sm text-ink"
+                    >
+                      <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-flame-bright" aria-hidden />
+                      Acepta la política de privacidad para enviar el formulario.
+                    </p>
+                  </Collapse>
+                  <button
+                    type="submit"
+                    disabled={status === "sending"}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-flame px-6 py-3.5 text-sm font-bold text-white glow-flame transition-colors duration-200 hover:bg-flame-bright disabled:cursor-not-allowed disabled:opacity-60 sm:px-8 sm:text-base cursor-pointer"
+                  >
                       {status === "sending" ? (
                         <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
                       ) : (
@@ -232,27 +313,21 @@ export default function Contact() {
                         </>
                       )}
                     </button>
-                  </div>
 
-                  <AnimatePresence>
-                    {status === "sent" && (
-                      <motion.p
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0 }}
-                        role="status"
-                        className="mt-5 flex items-center gap-2 rounded-xl border border-sage/25 bg-sage/10 px-4 py-3 text-sm text-sage-bright"
-                      >
-                        <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden />
-                        Recibido. Te contactamos en menos de 24 horas para agendar tu diagnóstico.
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
+                  <Collapse open={status === "sent"}>
+                    <p
+                      role="status"
+                      className="mt-5 flex items-center gap-2 rounded-xl border border-sage/25 bg-sage/10 px-4 py-3 text-sm text-sage-bright"
+                    >
+                      <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden />
+                      Recibido. Te contactamos en menos de 24 horas para agendar tu diagnóstico.
+                    </p>
+                  </Collapse>
                 </div>
               </div>
-            </form>
+            </motion.form>
           </Reveal>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

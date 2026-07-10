@@ -7,10 +7,10 @@ import { Menu, X } from "lucide-react";
 import { goToHash } from "@/lib/hash-nav";
 
 const links = [
-  { href: "#problema", label: "El problema" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#metodo", label: "Método" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#problema", label: "El problema" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#metodo", label: "Método" },
+  { href: "/#faq", label: "FAQ" },
 ] as const;
 
 export default function Navbar() {
@@ -39,7 +39,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="flex items-center justify-between" aria-label="Principal">
-        <a href="#inicio" className="flex items-center gap-2.5 cursor-pointer group">
+        <a href="/" className="flex items-center gap-2.5 cursor-pointer group">
           <BrandLogo
             alt="Logo de Emberize, flor de loto en llamas azules"
             width={40}
@@ -67,7 +67,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <motion.a
-            href="#contacto"
+            href="/#contacto"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
             className="hidden sm:inline-flex items-center rounded-xl bg-sage px-5 py-2.5 text-sm font-semibold text-night transition-colors duration-200 hover:bg-sage-bright cursor-pointer"
@@ -108,8 +108,8 @@ export default function Navbar() {
             ))}
             <li>
               <a
-                href="#contacto"
-                onClick={menuClick("#contacto")}
+                href="/#contacto"
+                  onClick={menuClick("/#contacto")}
                 className="mt-1 block rounded-lg bg-sage px-3 py-2.5 text-center text-sm font-semibold text-night"
               >
                 Agenda una demo

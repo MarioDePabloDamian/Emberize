@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HashNav from "@/components/HashNav";
 import ScrollProgress from "@/components/ScrollProgress";
-import GlobalVortex from "@/components/GlobalVortex";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Problem from "@/components/Problem";
@@ -12,11 +11,17 @@ import Testimonials from "@/components/Testimonials";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { buildJsonLdGraph } from "@/lib/schema";
 
 export default function Home() {
+  const jsonLd = buildJsonLdGraph();
+
   return (
     <>
-      <GlobalVortex />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HashNav />
       <ScrollProgress />
       <Navbar />

@@ -1,4 +1,5 @@
 import BrandLogo from "./BrandLogo";
+import FooterCookiePrefs from "./FooterCookiePrefs";
 
 export default function Footer() {
   return (
@@ -14,25 +15,33 @@ export default function Footer() {
         <p className="text-center text-xs text-ink-muted">
           IA, SEO y automatización para estudios de pilates.
           <br className="sm:hidden" /> © {new Date().getFullYear()} Emberize. Todos los derechos reservados.
+          <br />
+          <a
+            href="/aviso-legal/"
+            className="mt-1 inline-block cursor-pointer underline decoration-line underline-offset-2 transition-colors duration-200 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright"
+          >
+            Aviso legal
+          </a>
         </p>
 
         <nav aria-label="Pie de página">
-          <ul className="flex items-center gap-5 text-xs text-ink-muted">
+          <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-ink-muted">
             <li>
-              <a href="#servicios" className="cursor-pointer hover:text-ink transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright">
+              <a href="/#servicios" className="cursor-pointer hover:text-ink transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright">
                 Servicios
               </a>
             </li>
             <li>
-              <a href="#faq" className="cursor-pointer hover:text-ink transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright">
+              <a href="/#faq" className="cursor-pointer hover:text-ink transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright">
                 FAQ
               </a>
             </li>
             <li>
-              <a href="#contacto" className="cursor-pointer hover:text-ink transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright">
+              <a href="/#contacto" className="cursor-pointer hover:text-ink transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright">
                 Contacto
               </a>
             </li>
+            <FooterCookiePrefs />
           </ul>
         </nav>
       </div>

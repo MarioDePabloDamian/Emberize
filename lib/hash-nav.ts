@@ -1,5 +1,9 @@
 const NAV_OFFSET = 88; // scroll-pt-22
 
+function isHomePath(pathname: string) {
+  return pathname === "/" || pathname === "/index.html";
+}
+
 export function scrollToHash() {
   const { hash } = window.location;
   if (!hash) return;
@@ -10,8 +14,13 @@ export function scrollToHash() {
 }
 
 export function goToHash(hash: string) {
-  if (window.location.hash !== hash) {
-    window.location.hash = hash;
+  const target = hash.startsWith("/#") ? hash.slice(1) : hash;
+  if (!isHomePath(window.location.pathname)) {
+    window.location.href = `/${target}`;
+    return;
+  }
+  if (window.location.hash !== target) {
+    window.location.hash = target;
   } else {
     scrollToHash();
   }

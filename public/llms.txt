@@ -1,0 +1,48 @@
+# Emberize
+
+> Agencia de automatización con IA, SEO local, GEO y AEO para estudios de pilates en España.
+
+Emberize ayuda a estudios de pilates (reformer, mat, clínico, prenatal, barre) a captar y retener alumnos con chatbots, agentes de voz, landing pages y posicionamiento en Google y en motores de IA como ChatGPT, Gemini y Perplexity.
+
+## Servicios
+
+1. Automatización — WhatsApp, Instagram, email y CRM con seguimiento de leads, recordatorios y recuperación de alumnos inactivos.
+2. Chatbot IA — Responde dudas, cualifica interesados y agenda sesiones de prueba 24/7 con el tono del estudio.
+3. Landing pages — Páginas de captación para sesiones de prueba, bonos y campañas de Meta/Google.
+4. Agentes de voz — Atiende llamadas, informa horarios y precios, agenda citas y transcribe conversaciones.
+5. SEO, GEO y AEO — SEO local (“pilates cerca de mí”), visibilidad en IAs generativas (GEO) y respuestas directas en buscadores (AEO).
+
+## Definiciones (SEO, GEO, AEO)
+
+- SEO: posicionamiento en Google y Google Maps para búsquedas locales de pilates.
+- GEO (Generative Engine Optimization): optimización para que ChatGPT, Gemini y Perplexity recomienden el estudio.
+- AEO (Answer Engine Optimization): aparecer como respuesta directa en buscadores y featured snippets.
+
+## Método (4 pasos)
+
+1. Diagnóstico — Análisis de canales, fugas y visibilidad. Sin compromiso.
+2. Diseño del sistema — Combo de automatización, chatbot, landing, voz y SEO/GEO/AEO.
+3. Implementación — Montaje, entrenamiento y pruebas en 2-4 semanas.
+4. Optimización continua — Medición de conversaciones, reservas y posiciones.
+
+## Preguntas frecuentes
+
+- ¿Necesito conocimientos técnicos? No. Emberize monta, configura y mantiene el sistema.
+- ¿El chatbot sonará robótico? Se entrena con el tono, horarios y tarifas del estudio.
+- ¿Cuánto tarda? Automatización: 2-4 semanas. SEO: primeros resultados en 2-3 meses.
+- ¿Funciona para estudios pequeños? Sí, especialmente si el dueño da clases y gestiona mensajes.
+- ¿RGPD? Herramientas conformes, consentimiento explícito, datos exportables.
+- ¿Precio? Presupuesto cerrado tras diagnóstico gratuito.
+
+## Contacto
+
+- Responsable: Mario De Pablo Damián
+- Email: mariodepablo2005@gmail.com
+- Web: https://emberize.es/
+- Diagnóstico gratuito: https://emberize.es/#contacto
+- Privacidad: https://emberize.es/privacidad/
+
+## Idioma y mercado
+
+- Idioma: español (España)
+- Mercado: estudios de pilates y wellness en España

@@ -41,7 +41,7 @@ jobs:
           NEXT_PUBLIC_GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
 
       - name: Verify static output
-        run: test -f out/index.html && test -f out/CNAME
+        run: test -f out/index.html && test -f out/CNAME && test -f out/robots.txt && test -f out/sitemap.xml && test -f out/llms.txt
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5

@@ -3,11 +3,10 @@
 import { useEffect, useState } from "react";
 import { Vortex } from "@/components/ui/vortex";
 
-type VortexProfile = "full" | "lite" | "off";
+type VortexProfile = "full" | "lite";
 
 function resolveProfile(): VortexProfile {
   if (typeof window === "undefined") return "lite";
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return "off";
   if (
     window.matchMedia("(pointer: coarse)").matches ||
     window.matchMedia("(max-width: 768px)").matches
@@ -24,25 +23,14 @@ export default function GlobalVortex() {
   useEffect(() => {
     setProfile(resolveProfile());
 
-    const queries = [
-      "(prefers-reduced-motion: reduce)",
-      "(pointer: coarse)",
-      "(max-width: 768px)",
-    ].map((q) => window.matchMedia(q));
+    const queries = ["(pointer: coarse)", "(max-width: 768px)"].map((q) =>
+      window.matchMedia(q),
+    );
 
     const update = () => setProfile(resolveProfile());
     queries.forEach((mq) => mq.addEventListener("change", update));
     return () => queries.forEach((mq) => mq.removeEventListener("change", update));
   }, []);
-
-  if (profile === "off") {
-    return (
-      <div
-        className="pointer-events-none fixed inset-0 z-0 h-[100dvh] w-full bg-[radial-gradient(ellipse_80%_55%_at_50%_0%,rgba(46,134,245,0.14),transparent_55%),radial-gradient(ellipse_60%_40%_at_50%_100%,rgba(52,211,153,0.1),transparent_50%)]"
-        aria-hidden
-      />
-    );
-  }
 
   const isLite = profile === "lite";
 

@@ -38,7 +38,7 @@ export default function Hero() {
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
           <BrandLogo
-            alt=""
+            alt="Emberize — automatización con IA para estudios de pilates"
             width={150}
             height={150}
             priority

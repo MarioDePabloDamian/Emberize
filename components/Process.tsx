@@ -5,33 +5,14 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { Search, PencilRuler, Rocket, LineChart } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import { useLightMotion } from "@/lib/use-light-motion";
+import { processSteps } from "@/lib/content/process";
 
-const steps = [
-  {
-    icon: Search,
-    belt: "Paso 01 — Respira",
-    title: "Diagnóstico",
-    text: "Analizamos cómo llegan y se pierden tus alumnos hoy: canales, horarios pico de consultas, visibilidad en Google y puntos de fuga. Sin compromiso.",
-  },
-  {
-    icon: PencilRuler,
-    belt: "Paso 02 — Alinea",
-    title: "Diseño del sistema",
-    text: "Te proponemos el combo exacto: qué automatizar, qué responde el chatbot, qué capta la landing, qué atiende la voz y qué posicionar en buscadores.",
-  },
-  {
-    icon: Rocket,
-    belt: "Paso 03 — Activa",
-    title: "Implementación",
-    text: "Lo montamos, lo entrenamos con los datos de tu estudio y lo probamos contigo. En 2-4 semanas está trabajando.",
-  },
-  {
-    icon: LineChart,
-    belt: "Paso 04 — Fluye",
-    title: "Optimización continua",
-    text: "Medimos conversaciones, reservas y posiciones en Google. Ajustamos cada mes para que el sistema mejore con constancia, como una buena práctica.",
-  },
-];
+const stepIcons = [Search, PencilRuler, Rocket, LineChart] as const;
+
+const steps = processSteps.map((s, i) => ({
+  ...s,
+  icon: stepIcons[i],
+}));
 
 export default function Process() {
   const ref = useRef<HTMLDivElement>(null);
