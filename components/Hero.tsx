@@ -77,9 +77,9 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 0.7 }}
           className="mx-auto mt-6 max-w-2xl text-base text-ink-muted sm:text-lg"
         >
-          Automatizamos la captación y gestión de alumnas de tu estudio de pilates con
+          Automatizamos la captación y gestión de alumnos de tu estudio de pilates con
           chatbots, agentes de voz, landing pages y SEO que te hace aparecer en Google
-          y en ChatGPT. Tú guía las sesiones. Nosotros respondemos, agendamos y hacemos
+          y en ChatGPT. Tú das las sesiones. Nosotros respondemos, agendamos y hacemos
           seguimiento 24/7.
         </motion.p>
 
@@ -95,7 +95,7 @@ export default function Hero() {
             whileTap={{ scale: 0.97 }}
             className="group inline-flex items-center gap-2 rounded-xl bg-sage px-7 py-3.5 text-base font-bold text-night glow-sage transition-colors duration-200 hover:bg-sage-bright cursor-pointer"
           >
-            Quiero más alumnas
+            Quiero más alumnos
             <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
           </motion.a>
           <motion.a

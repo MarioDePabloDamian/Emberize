@@ -104,7 +104,7 @@ export default function Contact() {
                   Solicita tu diagnóstico
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                  Cuéntanos cómo captáis alumnas hoy. Te proponemos qué automatizar y cómo
+                  Cuéntanos cómo captáis alumnos hoy. Te proponemos qué automatizar y cómo
                   mejorar tu visibilidad online.
                 </p>
               </div>
@@ -202,7 +202,7 @@ export default function Contact() {
                       name="message"
                       required
                       rows={4}
-                      placeholder="Ej. Tenemos dos salas de reformer con unas 90 alumnas, recibimos consultas por Instagram y WhatsApp pero se nos escapan muchas..."
+                      placeholder="Ej. Tenemos dos salas de reformer con unos 90 alumnos, recibimos consultas por Instagram y WhatsApp pero se nos escapan muchas..."
                       className="form-textarea"
                     />
                   </div>

@@ -9,14 +9,14 @@ const services = [
     icon: Workflow,
     name: "Automatización",
     tagline: "Tu recepción invisible",
-    text: "Conectamos tu WhatsApp, Instagram, email y CRM. Seguimiento automático de interesadas, recordatorios de clases de prueba, avisos de renovación y recuperación de alumnas inactivas.",
-    bullets: ["Seguimiento de leads sin mover un dedo", "Recordatorios que reducen ausencias", "Alertas de alumnas en riesgo de baja"],
+    text: "Conectamos tu WhatsApp, Instagram, email y CRM. Seguimiento automático de interesados, recordatorios de clases de prueba, avisos de renovación y recuperación de alumnos inactivos.",
+    bullets: ["Seguimiento de leads sin mover un dedo", "Recordatorios que reducen ausencias", "Alertas de alumnos en riesgo de baja"],
   },
   {
     icon: Bot,
     name: "Chatbot IA",
     tagline: "Responde mientras das clase",
-    text: "Un asistente entrenado con los horarios, tarifas y tipos de clase de tu estudio. Responde dudas, cualifica interesadas y agenda sesiones de prueba a cualquier hora, todos los días.",
+    text: "Un asistente entrenado con los horarios, tarifas y tipos de clase de tu estudio. Responde dudas, cualifica interesados y agenda sesiones de prueba a cualquier hora, todos los días.",
     bullets: ["Respuesta en segundos, 24/7", "Agenda pruebas directamente en tu calendario", "Habla con el tono de tu estudio"],
   },
   {
@@ -37,7 +37,7 @@ const services = [
     icon: Search,
     name: "SEO, GEO y AEO",
     tagline: "Que te encuentren en Google… y en ChatGPT",
-    text: "Posicionamos tu estudio donde busca tu clienta: SEO local para “pilates cerca de mí”, GEO para que las IAs como ChatGPT o Gemini te recomienden, y AEO para aparecer como respuesta directa.",
+    text: "Posicionamos tu estudio donde busca tu cliente: SEO local para “pilates cerca de mí”, GEO para que las IAs como ChatGPT o Gemini te recomienden, y AEO para aparecer como respuesta directa.",
     bullets: ["SEO local: Google Maps y búsquedas de tu zona", "GEO: visibilidad en ChatGPT, Gemini y Perplexity", "AEO: respuestas destacadas y datos estructurados"],
   },
 ];
@@ -62,7 +62,7 @@ export default function Services() {
               Cinco pilares de <span className="text-flame-bright">crecimiento</span>
             </>
           }
-          subtitle="Cada servicio funciona solo o en equipo. Juntos forman un sistema que capta, convierte y retiene alumnas mientras tú te dedicas a las sesiones."
+          subtitle="Cada servicio funciona solo o en equipo. Juntos forman un sistema que capta, convierte y retiene alumnos mientras tú te dedicas a las sesiones."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-2">

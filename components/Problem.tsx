@@ -14,7 +14,7 @@ const pains = [
   {
     icon: PhoneMissed,
     title: "Llamadas perdidas en plena sesión",
-    text: "Estás guiando una clase y suena el teléfono. Cada llamada perdida es una alumna nueva que se enfría.",
+    text: "Estás guiando una clase y suena el teléfono. Cada llamada perdida es un alumno nuevo que se enfría.",
   },
   {
     icon: CalendarX,
@@ -36,10 +36,10 @@ export default function Problem() {
           chapter="Capítulo 01 — El problema"
           title={
             <>
-              Cada día pierdes alumnas <span className="text-sage">sin darte cuenta</span>
+              Cada día pierdes alumnos <span className="text-sage">sin darte cuenta</span>
             </>
           }
-          subtitle="Eres experta en cuidar cuerpos y posturas, no en perseguir mensajes. Mientras guías tus sesiones, las interesadas se escapan por las grietas."
+          subtitle="Dominas cuerpos y posturas, no perseguir mensajes. Mientras das tus sesiones, los interesados se escapan por las grietas."
         />
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2">

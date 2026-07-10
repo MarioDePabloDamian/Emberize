@@ -11,7 +11,7 @@ const steps = [
     icon: Search,
     belt: "Paso 01 — Respira",
     title: "Diagnóstico",
-    text: "Analizamos cómo llegan y se pierden tus alumnas hoy: canales, horarios pico de consultas, visibilidad en Google y puntos de fuga. Sin compromiso.",
+    text: "Analizamos cómo llegan y se pierden tus alumnos hoy: canales, horarios pico de consultas, visibilidad en Google y puntos de fuga. Sin compromiso.",
   },
   {
     icon: PencilRuler,

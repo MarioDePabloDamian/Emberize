@@ -8,11 +8,11 @@ import SectionHeading from "./SectionHeading";
 const faqs = [
   {
     q: "¿Necesito conocimientos técnicos para usar esto?",
-    a: "No. Nosotros montamos, configuramos y mantenemos todo el sistema. Tú solo ves los resultados: reservas en tu calendario, conversaciones resueltas y alumnas nuevas en tus clases.",
+    a: "No. Nosotros montamos, configuramos y mantenemos todo el sistema. Tú solo ves los resultados: reservas en tu calendario, conversaciones resueltas y alumnos nuevos en tus clases.",
   },
   {
-    q: "¿El chatbot sonará robótico con mis alumnas?",
-    a: "Lo entrenamos con el tono de tu estudio: horarios, tarifas, tipos de clase, nombres de tus instructoras y hasta tu forma de hablar. Y cuando una conversación requiere un humano, te la pasa al instante.",
+    q: "¿El chatbot sonará robótico con mis alumnos?",
+    a: "Lo entrenamos con el tono de tu estudio: horarios, tarifas, tipos de clase, nombres de tu equipo y hasta tu forma de hablar. Y cuando una conversación requiere un humano, te la pasa al instante.",
   },
   {
     q: "¿Qué es eso de SEO, GEO y AEO?",
@@ -24,10 +24,10 @@ const faqs = [
   },
   {
     q: "¿Funciona para estudios pequeños?",
-    a: "Especialmente para ellos. Si eres tú quien da las clases, contesta los mensajes y pasa las cuotas, la automatización te devuelve horas cada semana y evita que se te escape ni una interesada.",
+    a: "Especialmente para ellos. Si eres tú quien da las clases, contesta los mensajes y pasa las cuotas, la automatización te devuelve horas cada semana y evita que se te escape ni un interesado.",
   },
   {
-    q: "¿Qué pasa con los datos de mis alumnas?",
+    q: "¿Qué pasa con los datos de mis alumnos?",
     a: "Tus datos son tuyos. Trabajamos con herramientas que cumplen el RGPD, con consentimiento explícito en formularios y conversaciones, y puedes exportarlo o eliminarlo todo cuando quieras.",
   },
   {

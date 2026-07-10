@@ -5,7 +5,7 @@ import { motion, useInView, animate, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 
 const stats = [
-  { value: 24, suffix: "/7", label: "Atención a interesadas, incluso a medianoche" },
+  { value: 24, suffix: "/7", label: "Atención a interesados, incluso a medianoche" },
   { value: 90, suffix: "%", label: "De consultas resueltas sin intervención humana" },
   { value: 3, suffix: "x", label: "Más sesiones de prueba agendadas con seguimiento automático" },
   { value: 15, suffix: "h", label: "Ahorradas a la semana en tareas administrativas" },

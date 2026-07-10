@@ -43,7 +43,7 @@ export default function VoiceWidgetEmbed() {
           Habla con el asistente de Emberize
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-          Así respondería la IA a las interesadas de un estudio de pilates. Pulsa el
+          Así respondería la IA a los interesados de un estudio de pilates. Pulsa el
           micrófono y pruébalo tú mismo.
         </p>
       </div>

@@ -9,19 +9,19 @@ const testimonials = [
     quote:
       "Antes perdía consultas de WhatsApp todos los días. Ahora el chatbot agenda las sesiones de prueba solo y yo me entero por el calendario. Hemos pasado de 8 a 21 pruebas al mes.",
     name: "Marta C.",
-    role: "Fundadora, estudio de Pilates Reformer",
+    role: "Responsable, estudio de Pilates Reformer",
   },
   {
     quote:
-      "El agente de voz atiende el teléfono mientras doy clase. Las interesadas reciben la información al momento y llegan a la prueba ya convencidas. Es como tener recepcionista sin el coste.",
+      "El agente de voz atiende el teléfono mientras doy clase. Los interesados reciben la información al momento y llegan a la prueba ya convencidos. Es como tener recepcionista sin el coste.",
     name: "Laura G.",
-    role: "Directora, estudio de Pilates y Barre",
+    role: "Responsable, estudio de Pilates y Barre",
   },
   {
     quote:
       "Con el SEO local pasamos de no salir en Google a ser el primer estudio de la zona, y la landing con seguimiento automático nos trajo 34 altas nuevas. La inversión se pagó sola el primer mes.",
     name: "Irene R.",
-    role: "Propietaria, centro de Pilates Clínico",
+    role: "Responsable, centro de Pilates Clínico",
   },
 ];
 
