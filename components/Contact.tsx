@@ -18,12 +18,13 @@ import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 import Collapse, { layoutEaseTransition } from "./Collapse";
 import VoiceWidgetEmbed from "./VoiceWidgetEmbed";
+import { badgeSage, btnFlameLg } from "@/lib/ui-classes";
+import { cn } from "@/lib/utils";
 
 const services = [
   "Automatización",
-  "Chatbot IA",
+  "Asistentes IA (texto o voz)",
   "Landing page",
-  "Agente de voz",
   "SEO / GEO / AEO",
   "No lo tengo claro",
 ];
@@ -31,7 +32,7 @@ const services = [
 const SENT_KEY = "emberize-contact-sent";
 
 const trustPoints = [
-  { icon: Clock3, text: "Respuesta en menos de 24 h" },
+  { icon: Clock3, text: "Te respondemos tras revisar tu solicitud" },
   { icon: ShieldCheck, text: "Sin spam ni compromiso" },
   { icon: Sparkles, text: "Diagnóstico 100 % gratuito" },
 ];
@@ -87,7 +88,7 @@ export default function Contact() {
               Enciende tu estudio. <span className="text-sage">Pide tu diagnóstico gratis.</span>
             </>
           }
-          subtitle="Prueba el asistente de voz o cuéntanos por escrito cómo trabaja tu estudio. Te enseñamos, sin compromiso, qué automatizaría la IA por ti y cómo mejorar tu visibilidad en Google."
+          subtitle="Habla con el asistente o cuéntanos por escrito cómo trabaja tu estudio. Te enseñamos, sin compromiso, qué automatizaría la IA por ti y cómo mejorar tu visibilidad en Google."
         />
 
         <motion.div
@@ -119,7 +120,7 @@ export default function Contact() {
               />
 
               <div className="relative border-b border-line px-4 py-5 sm:px-8">
-                <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-sage/10 px-3 py-1 text-xs font-medium text-sage-bright">
+                <div className={cn(badgeSage, "mb-2")}>
                   <PenLine className="h-3.5 w-3.5" aria-hidden />
                   Por escrito
                 </div>
@@ -127,7 +128,7 @@ export default function Contact() {
                   Solicita tu diagnóstico
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                  Cuéntanos cómo captáis alumnos hoy. Te proponemos qué automatizar y cómo
+                  Cuéntanos cómo llegan las consultas a tu estudio. Te proponemos qué automatizar y cómo
                   mejorar tu visibilidad online.
                 </p>
               </div>
@@ -297,7 +298,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-flame px-6 py-3.5 text-sm font-bold text-white glow-flame transition-colors duration-200 hover:bg-flame-bright disabled:cursor-not-allowed disabled:opacity-60 sm:px-8 sm:text-base cursor-pointer"
+                    className={cn(btnFlameLg, "w-full disabled:cursor-not-allowed disabled:opacity-60 sm:px-8")}
                   >
                       {status === "sending" ? (
                         <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
@@ -308,8 +309,8 @@ export default function Contact() {
                         "Enviando..."
                       ) : (
                         <>
-                          <span className="md:hidden">Solicitar diagnóstico</span>
-                          <span className="hidden md:inline">Solicitar diagnóstico gratis</span>
+                          <span className="md:hidden">Solicita tu diagnóstico</span>
+                          <span className="hidden md:inline">Solicita tu diagnóstico gratis</span>
                         </>
                       )}
                     </button>
@@ -320,7 +321,7 @@ export default function Contact() {
                       className="mt-5 flex items-center gap-2 rounded-xl border border-sage/25 bg-sage/10 px-4 py-3 text-sm text-sage-bright"
                     >
                       <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden />
-                      Recibido. Te contactamos en menos de 24 horas para agendar tu diagnóstico.
+                      Recibido. Te contactamos para agendar tu diagnóstico gratuito.
                     </p>
                   </Collapse>
                 </div>

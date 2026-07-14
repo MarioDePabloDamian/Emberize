@@ -10,11 +10,7 @@ import {
   setCookieConsent,
   type CookieConsent,
 } from "@/lib/cookies";
-
-const btnSecondary =
-  "cursor-pointer rounded-xl border border-line px-4 py-2.5 text-sm font-medium text-ink-muted transition-colors duration-200 hover:border-flame/40 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright";
-const btnPrimary =
-  "cursor-pointer rounded-xl bg-flame px-4 py-2.5 text-sm font-bold text-white transition-colors duration-200 hover:bg-flame-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright";
+import { btnFlame, btnSecondary } from "@/lib/ui-classes";
 
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
@@ -46,36 +42,44 @@ export default function CookieConsent() {
       <div
         role="dialog"
         aria-modal="true"
-        aria-label="Preferencias de cookies"
-        className="fixed inset-x-4 bottom-4 z-[70] mx-auto max-w-3xl rounded-2xl glass p-5 shadow-lg sm:inset-x-6"
+        aria-labelledby="cookie-consent-title"
+        aria-describedby="cookie-consent-desc"
+        className="fixed inset-x-3 bottom-3 z-[70] mx-auto max-w-3xl rounded-2xl glass p-4 shadow-lg sm:inset-x-6 sm:bottom-4 sm:p-5"
       >
         <div className="flex gap-3">
           <Cookie className="mt-0.5 h-5 w-5 shrink-0 text-flame-bright" aria-hidden />
-          <p className="text-sm leading-relaxed text-ink">
-            Usamos cookies propias y de terceros para analítica, el formulario de contacto y la
-            demo de voz. Puedes aceptarlas o usar solo las necesarias. Más info en la{" "}
-            <Link
-              href="/cookies/"
-              className="cursor-pointer text-flame-bright underline transition-colors duration-200 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright"
-            >
-              política de cookies
-            </Link>{" "}
-            y la{" "}
-            <Link
-              href="/privacidad/"
-              className="cursor-pointer text-flame-bright underline transition-colors duration-200 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright"
-            >
-              política de privacidad
-            </Link>
-            .
-          </p>
+          <div className="min-w-0">
+            <p id="cookie-consent-title" className="sr-only">
+              Preferencias de cookies
+            </p>
+            <p id="cookie-consent-desc" className="text-sm leading-relaxed text-ink">
+              Para hablar con el asistente en vivo necesitas aceptar cookies de terceros. También
+              las usamos para analítica y el formulario de contacto. Puedes aceptarlas o usar solo
+              las necesarias (sin asistente). Más info en la{" "}
+              <Link
+                href="/cookies/"
+                className="cursor-pointer text-flame-bright underline transition-colors duration-200 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright"
+              >
+                política de cookies
+              </Link>{" "}
+              y la{" "}
+              <Link
+                href="/privacidad/"
+                className="cursor-pointer text-flame-bright underline transition-colors duration-200 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright"
+              >
+                política de privacidad
+              </Link>
+              .
+            </p>
+          </div>
         </div>
-        <div className="mt-4 flex flex-col gap-2 sm:ml-8 sm:flex-row sm:justify-end">
+        <div className="mt-4 flex flex-col-reverse gap-2 sm:ml-8 sm:flex-row sm:justify-end">
           <button type="button" onClick={() => choose("essential")} className={btnSecondary}>
             Solo necesarias
           </button>
-          <button type="button" onClick={() => choose("all")} className={btnPrimary}>
-            Aceptar todas
+          <button type="button" onClick={() => choose("all")} className={btnFlame}>
+            <span className="sm:hidden">Acepta y habla</span>
+            <span className="hidden sm:inline">Acepta y habla con el asistente</span>
           </button>
         </div>
       </div>

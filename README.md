@@ -49,8 +49,8 @@ El archivo `public/CNAME` ya incluye `emberize.es` para que el export estático 
 
 ## Formulario de contacto
 
-Los envíos se capturan en **GoHighLevel** con el script de External Tracking instalado en `app/layout.tsx`.
+Los envíos del formulario se capturan con **GoHighLevel** mediante el script de External Tracking en `app/layout.tsx`.
 
-En GHL puedes ver los leads en **Contacts** y **Form Submissions**, y crear workflows con el trigger **Form Submission** (filtra por nombre de formulario: `emberize-diagnostico`).
+En GHL puedes ver las solicitudes en **Contacts** y **Form Submissions**, y crear workflows con el trigger **Form Submission** (filtra por nombre de formulario: `emberize-diagnostico`).
 
 Para probar: envía el formulario desde la web publicada y comprueba que el contacto aparece en tu sub-cuenta.

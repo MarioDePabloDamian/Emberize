@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { MessageCircleOff, PhoneMissed, CalendarX, TrendingDown } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import SectionNextCta from "./SectionNextCta";
 
 const pains = [
   {
@@ -14,7 +15,7 @@ const pains = [
   {
     icon: PhoneMissed,
     title: "Llamadas perdidas en plena sesión",
-    text: "Estás guiando una clase y suena el teléfono. Cada llamada perdida es un alumno nuevo que se enfría.",
+    text: "Estás guiando una clase y el teléfono queda sin atender. Cada llamada perdida es un interesado que se enfría.",
   },
   {
     icon: CalendarX,
@@ -70,6 +71,8 @@ export default function Problem() {
             </span>
           </p>
         </Reveal>
+
+        <SectionNextCta href="#servicios">Descubre cómo lo solucionamos</SectionNextCta>
       </div>
     </section>
   );

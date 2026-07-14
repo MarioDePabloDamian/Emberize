@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteTitle,
     description:
-      "Automatiza la captación y gestión de alumnos de tu estudio de pilates con IA: chatbots, voz, landing pages, SEO local y GEO/AEO.",
+      "Landing pages, SEO, GEO/AEO y asistentes de IA (texto y voz) para captar consultas en tu estudio de pilates.",
     url: siteUrl,
     siteName,
     locale: "es_ES",

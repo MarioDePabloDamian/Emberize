@@ -11,6 +11,9 @@ import {
   type CookieConsent,
 } from "@/lib/cookies";
 import { isAllowedWidgetHost } from "@/lib/voice-widget-allowlist";
+import { ASSISTANT_SECTION_ID } from "@/lib/site";
+import { badgeFlame, btnFlame } from "@/lib/ui-classes";
+import { cn } from "@/lib/utils";
 import Collapse, { layoutEaseTransition } from "@/components/Collapse";
 
 const WIDGET_ID = process.env.NEXT_PUBLIC_GHL_WIDGET_ID;
@@ -53,47 +56,49 @@ export default function VoiceWidgetEmbed() {
   );
 
   return (
-    <motion.div
+    <motion.article
+      id={ASSISTANT_SECTION_ID}
       layout
       transition={layoutEaseTransition}
-      className="glass flex h-full min-w-0 flex-col overflow-hidden rounded-3xl"
+      aria-labelledby="asistente-heading"
+      className="glass scroll-mt-22 flex h-full min-w-0 flex-col overflow-hidden rounded-3xl"
     >
-      <div className="border-b border-line px-4 py-5 sm:px-8">
-        <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-flame/10 px-3 py-1 text-xs font-medium text-flame-bright">
-          <Mic className="h-3.5 w-3.5" aria-hidden />
-          Demo en vivo
-        </div>
-        <h3 className="font-display text-xl tracking-wide text-ink sm:text-2xl">
+      <header className="border-b border-line px-4 py-5 sm:px-8">
+        <p className={cn(badgeFlame, "mb-2")}>
+          <Mic className="h-3.5 w-3.5 shrink-0" aria-hidden />
+          Asistente en vivo
+        </p>
+        <h3 id="asistente-heading" className="font-display text-xl tracking-wide text-ink sm:text-2xl">
           Habla con el asistente de Emberize
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-ink-muted">
           Así respondería la IA a los interesados de un estudio de pilates. Pulsa el
           micrófono y pruébalo tú mismo.
         </p>
-      </div>
+      </header>
 
       <motion.div layout transition={layoutEaseTransition} className="relative flex min-w-0 flex-1 flex-col">
         <Collapse open={consent !== "all"}>
           {consent === "essential" ? (
-            <div className="flex min-h-[300px] flex-1 flex-col items-center justify-center gap-4 px-6 py-10 text-center sm:min-h-[380px] lg:min-h-[440px]">
+            <div className="flex min-h-[280px] flex-1 flex-col items-center justify-center gap-4 px-4 py-8 text-center sm:min-h-[380px] sm:px-6 sm:py-10 lg:min-h-[440px]">
               <p className="max-w-sm text-sm leading-relaxed text-ink-muted">
-                La demo de voz usa cookies de terceros. Actívalas para probar el asistente.
+                El asistente usa cookies de terceros. Actívalas para hablar con él.
               </p>
               <button
                 type="button"
                 onClick={acceptAllCookies}
-                className="cursor-pointer rounded-xl bg-flame px-5 py-2.5 text-sm font-bold text-white transition-colors duration-200 hover:bg-flame-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright"
+                className={cn(btnFlame, "w-full max-w-xs sm:w-auto")}
               >
-                Aceptar cookies y probar la demo
+                Acepta cookies y habla con el asistente
               </button>
               <button
                 type="button"
                 onClick={openCookieSettings}
-                className="cursor-pointer text-xs text-ink-muted underline transition-colors duration-200 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright"
+                className="cursor-pointer px-2 py-2 text-xs text-ink-muted underline transition-colors duration-200 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright"
               >
                 Cambiar preferencias
               </button>
-              <p className="max-w-sm text-xs text-ink-muted">
+              <p className="max-w-sm text-xs leading-relaxed text-ink-muted">
                 Más info en la{" "}
                 <Link
                   href="/cookies/"
@@ -105,9 +110,9 @@ export default function VoiceWidgetEmbed() {
               </p>
             </div>
           ) : (
-            <div className="flex min-h-[300px] flex-1 flex-col items-center justify-center px-6 py-10 text-center sm:min-h-[380px] lg:min-h-[440px]">
+            <div className="flex min-h-[280px] flex-1 flex-col items-center justify-center px-4 py-8 text-center sm:min-h-[380px] sm:px-6 sm:py-10 lg:min-h-[440px]">
               <p className="max-w-sm text-sm leading-relaxed text-ink-muted">
-                Acepta las cookies en el aviso inferior para activar la demo de voz.
+                Acepta las cookies en el aviso inferior para activar el asistente.
               </p>
             </div>
           )}
@@ -116,11 +121,12 @@ export default function VoiceWidgetEmbed() {
         <Collapse open={consent === "all"}>
           <div
             ref={widgetHostRef}
-            className="emberize-voice-widget-host relative flex min-h-[300px] min-w-0 max-w-full flex-1 flex-col items-center justify-center overflow-x-clip overflow-hidden bg-surface/40 px-1 pb-2 sm:min-h-[380px] sm:px-0 lg:min-h-[440px]"
-            aria-label="Asistente de voz Emberize"
+            role="region"
+            className="emberize-voice-widget-host relative flex min-h-[280px] min-w-0 max-w-full flex-1 flex-col items-center justify-center overflow-x-clip overflow-hidden bg-surface/40 px-1 pb-2 sm:min-h-[380px] sm:px-0 lg:min-h-[440px]"
+            aria-label="Interfaz del asistente de voz Emberize"
           />
         </Collapse>
       </motion.div>
-    </motion.div>
+    </motion.article>
   );
 }

@@ -5,7 +5,11 @@ export const siteName = "Emberize";
 export const siteTitle = "Emberize — IA y SEO para Estudios de Pilates";
 
 export const siteDescription =
-  "Agencia de automatización con IA especializada en estudios de pilates. Chatbots, agentes de voz, landing pages, SEO local y posicionamiento en buscadores con IA (GEO/AEO) que llenan tus clases.";
+  "Agencia de automatización con IA para estudios de pilates: landing pages, SEO local, GEO/AEO, chatbots y asistentes de texto y voz que captan consultas mientras tú das clase.";
+
+export const ASSISTANT_SECTION_ID = "asistente";
+export const ASSISTANT_HASH = `#${ASSISTANT_SECTION_ID}` as const;
+export const ASSISTANT_PATH = `/${ASSISTANT_HASH}` as const;
 
 export const siteKeywords = [
   "automatización pilates",
@@ -15,7 +19,7 @@ export const siteKeywords = [
   "AEO pilates",
   "chatbot pilates",
   "agente de voz pilates",
-  "captación alumnos pilates",
+  "captación consultas pilates",
   "pilates reformer marketing",
   "Emberize",
 ];

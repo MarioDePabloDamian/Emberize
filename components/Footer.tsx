@@ -1,5 +1,6 @@
 import BrandLogo from "./BrandLogo";
 import FooterCookiePrefs from "./FooterCookiePrefs";
+import { ASSISTANT_PATH } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -34,6 +35,11 @@ export default function Footer() {
             <li>
               <a href="/#faq" className="cursor-pointer hover:text-ink transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright">
                 FAQ
+              </a>
+            </li>
+            <li>
+              <a href={ASSISTANT_PATH} className="cursor-pointer hover:text-ink transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright">
+                Asistente
               </a>
             </li>
             <li>

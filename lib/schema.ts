@@ -38,7 +38,7 @@ export function buildJsonLdGraph() {
         },
         knowsAbout: [
           "Automatización con IA para estudios de pilates",
-          "Chatbots y agentes de voz",
+          "Asistentes de IA (texto y voz)",
           "Landing pages de captación",
           "SEO local",
           "GEO (Generative Engine Optimization)",
@@ -56,7 +56,7 @@ export function buildJsonLdGraph() {
         description: siteDescription,
         knowsAbout: [
           "Automatización con IA para estudios de pilates",
-          "Chatbots y agentes de voz",
+          "Asistentes de IA (texto y voz)",
           "Landing pages de captación",
           "SEO local",
           "GEO (Generative Engine Optimization)",

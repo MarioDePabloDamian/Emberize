@@ -2,14 +2,16 @@
 
 import BrandLogo from "./BrandLogo";
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
-import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { ChevronDown, Sparkles } from "lucide-react";
+import SectionNextCta from "./SectionNextCta";
+import { badgeFlame } from "@/lib/ui-classes";
+import { cn } from "@/lib/utils";
 import { useLightMotion } from "@/lib/use-light-motion";
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const lightMotion = useLightMotion();
-  const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -25,12 +27,10 @@ export default function Hero() {
       ref={ref}
       className="relative flex min-h-svh min-h-dvh scroll-mt-22 flex-col items-center justify-center overflow-x-clip px-6 pt-28 pb-16"
     >
-      {reduce && (
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_45%_at_50%_38%,rgba(46,134,245,0.22),transparent_70%),radial-gradient(ellipse_40%_30%_at_50%_80%,rgba(52,211,153,0.1),transparent_70%)]"
-        />
-      )}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_45%_at_50%_38%,rgba(46,134,245,0.22),transparent_70%),radial-gradient(ellipse_40%_30%_at_50%_80%,rgba(52,211,153,0.1),transparent_70%)]"
+      />
 
       <motion.div style={{ y: yLogo, opacity }} className="relative">
         <motion.div
@@ -52,7 +52,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.6 }}
-          className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium tracking-wide text-flame-bright"
+          className={cn(badgeFlame, "mx-auto mb-5 glass px-4 py-1.5")}
         >
           <Sparkles className="h-3.5 w-3.5" />
           IA, SEO y automatización para estudios de pilates
@@ -77,36 +77,15 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 0.7 }}
           className="mx-auto mt-6 max-w-2xl text-base text-ink-muted sm:text-lg"
         >
-          Automatizamos la captación y gestión de alumnos de tu estudio de pilates con
+          Automatizamos la captación de alumnos para tu estudio de pilates con
           chatbots, agentes de voz, landing pages y SEO que te hace aparecer en Google
-          y en ChatGPT. Tú das las sesiones. Nosotros respondemos, agendamos y hacemos
-          seguimiento 24/7.
+          y en ChatGPT. Tú das las sesiones. Nosotros respondemos, coordinamos citas de prueba y hacemos
+          seguimiento aunque tú estés en clase.
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.55, duration: 0.7 }}
-          className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row"
-        >
-          <motion.a
-            href="#contacto"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            className="group inline-flex items-center gap-2 rounded-xl bg-sage px-7 py-3.5 text-base font-bold text-night glow-sage transition-colors duration-200 hover:bg-sage-bright cursor-pointer"
-          >
-            Quiero más alumnos
-            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-          </motion.a>
-          <motion.a
-            href="#servicios"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 rounded-xl glass px-7 py-3.5 text-base font-semibold text-ink transition-colors duration-200 hover:border-flame/50 cursor-pointer"
-          >
-            Ver servicios
-          </motion.a>
-        </motion.div>
+        <SectionNextCta href="#problema" className="mt-9">
+          Ver cómo ayudamos a estudios como el tuyo
+        </SectionNextCta>
       </motion.div>
 
       <motion.a

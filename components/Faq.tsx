@@ -1,5 +1,6 @@
 import { Plus } from "lucide-react";
 import SectionHeading from "./SectionHeading";
+import SectionNextCta from "./SectionNextCta";
 import { faqs } from "@/lib/content/faq";
 
 export default function Faq() {
@@ -35,6 +36,8 @@ export default function Faq() {
             </details>
           ))}
         </div>
+
+        <SectionNextCta href="#contacto">Pide tu diagnóstico gratis</SectionNextCta>
       </div>
     </section>
   );

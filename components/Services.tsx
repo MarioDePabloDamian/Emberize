@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Workflow, Bot, PanelsTopLeft, AudioLines, Search, ArrowRight } from "lucide-react";
+import { Workflow, BotMessageSquare, PanelsTopLeft, Search, ArrowRight } from "lucide-react";
 import SectionHeading from "./SectionHeading";
+import SectionNextCta from "./SectionNextCta";
 import { servicesContent } from "@/lib/content/services";
 
-const serviceIcons = [Workflow, Bot, PanelsTopLeft, AudioLines, Search] as const;
+const serviceIcons = [Workflow, BotMessageSquare, PanelsTopLeft, Search] as const;
 
 const services = servicesContent.map((s, i) => ({
   ...s,
@@ -29,10 +30,10 @@ export default function Services() {
           chapter="Capítulo 02 — La solución"
           title={
             <>
-              Cinco pilares de <span className="text-flame-bright">crecimiento</span>
+              Cuatro pilares de <span className="text-flame-bright">crecimiento</span>
             </>
           }
-          subtitle="Cada servicio funciona solo o en equipo. Juntos forman un sistema que capta, convierte y retiene alumnos mientras tú te dedicas a las sesiones."
+          subtitle="Cada servicio funciona solo o en equipo. Juntos forman un sistema que capta y convierte consultas mientras tú te dedicas a las sesiones."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-2">
@@ -44,9 +45,7 @@ export default function Services() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.65, delay: (i % 2) * 0.12, ease: [0.21, 0.65, 0.36, 1] }}
               whileHover={{ y: -6 }}
-              className={`group relative overflow-hidden rounded-3xl glass p-8 transition-colors duration-300 hover:border-flame/50 ${
-                i === services.length - 1 ? "lg:col-span-2" : ""
-              }`}
+              className="group relative overflow-hidden rounded-3xl glass p-8 transition-colors duration-300 hover:border-flame/50"
             >
               <div
                 aria-hidden
@@ -76,23 +75,7 @@ export default function Services() {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-12 text-center"
-        >
-          <motion.a
-            href="#contacto"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 rounded-xl bg-flame px-7 py-3.5 text-base font-bold text-white glow-flame transition-colors duration-200 hover:bg-flame-bright cursor-pointer"
-          >
-            Diseña tu sistema a medida
-            <ArrowRight className="h-4 w-4" aria-hidden />
-          </motion.a>
-        </motion.div>
+        <SectionNextCta href="#metodo">Conoce el método paso a paso</SectionNextCta>
       </div>
     </section>
   );

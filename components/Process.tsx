@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Search, PencilRuler, Rocket, LineChart } from "lucide-react";
 import SectionHeading from "./SectionHeading";
+import SectionNextCta from "./SectionNextCta";
 import { useLightMotion } from "@/lib/use-light-motion";
 import { processSteps } from "@/lib/content/process";
 
@@ -83,6 +84,8 @@ export default function Process() {
             })}
           </ol>
         </div>
+
+        <SectionNextCta href="#resultados">Mira los resultados en cifras</SectionNextCta>
       </div>
     </section>
   );

@@ -3,8 +3,11 @@
 import BrandLogo from "./BrandLogo";
 import { useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Menu, Mic, X } from "lucide-react";
 import { goToHash } from "@/lib/hash-nav";
+import { ASSISTANT_PATH } from "@/lib/site";
+import { btnSage } from "@/lib/ui-classes";
+import { cn } from "@/lib/utils";
 
 const links = [
   { href: "/#problema", label: "El problema" },
@@ -34,12 +37,12 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-4 left-4 right-4 z-50 mx-auto max-w-6xl rounded-2xl px-5 py-3 transition-[background-color,box-shadow,border-color] duration-300 ${
+      className={`fixed top-4 left-4 right-4 z-50 mx-auto max-w-6xl rounded-2xl px-4 py-3 transition-[background-color,box-shadow,border-color] duration-300 sm:px-5 ${
         scrolled ? "glass glow-flame" : "bg-transparent border border-transparent"
       }`}
     >
-      <nav className="flex items-center justify-between" aria-label="Principal">
-        <a href="/" className="flex items-center gap-2.5 cursor-pointer group">
+      <nav className="flex items-center justify-between gap-3" aria-label="Principal">
+        <a href="/" className="flex min-w-0 shrink items-center gap-2.5 cursor-pointer group">
           <BrandLogo
             alt="Logo de Emberize, flor de loto en llamas azules"
             width={40}
@@ -47,17 +50,17 @@ export default function Navbar() {
             className="transition-transform duration-300 group-hover:-rotate-6"
             priority
           />
-          <span className="font-display text-2xl tracking-wider text-ink">
+          <span className="font-display text-xl tracking-wider text-ink sm:text-2xl">
             EMBER<span className="text-flame-bright">IZE</span>
           </span>
         </a>
 
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex items-center gap-6 lg:gap-8">
           {links.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className="relative cursor-pointer text-sm text-ink-muted hover:text-ink transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-flame-bright after:transition-all after:duration-300 hover:after:w-full"
+                className="relative cursor-pointer whitespace-nowrap text-sm text-ink-muted hover:text-ink transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-flame-bright after:transition-all after:duration-300 hover:after:w-full"
               >
                 {l.label}
               </a>
@@ -65,21 +68,21 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
-          <motion.a
-            href="/#contacto"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            className="hidden sm:inline-flex items-center rounded-xl bg-sage px-5 py-2.5 text-sm font-semibold text-night transition-colors duration-200 hover:bg-sage-bright cursor-pointer"
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <a
+            href={ASSISTANT_PATH}
+            className={cn(btnSage, "hidden sm:inline-flex whitespace-nowrap lg:px-5")}
           >
-            Agenda una demo
-          </motion.a>
+            <Mic className="h-4 w-4 shrink-0" aria-hidden />
+            <span className="hidden lg:inline">Habla con el asistente</span>
+            <span className="lg:hidden">Asistente</span>
+          </a>
           <button
             type="button"
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
-            className="md:hidden rounded-lg p-2 text-ink hover:bg-surface-2 transition-colors duration-200 cursor-pointer"
+            className="md:hidden min-h-11 min-w-11 rounded-lg p-2 text-ink hover:bg-surface-2 transition-colors duration-200 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -100,7 +103,7 @@ export default function Navbar() {
                 <a
                   href={l.href}
                   onClick={menuClick(l.href)}
-                  className="block cursor-pointer rounded-lg px-3 py-2.5 text-sm text-ink-muted hover:text-ink hover:bg-surface-2 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright"
+                  className="block min-h-11 cursor-pointer rounded-lg px-3 py-2.5 text-sm text-ink-muted hover:text-ink hover:bg-surface-2 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-bright"
                 >
                   {l.label}
                 </a>
@@ -108,11 +111,12 @@ export default function Navbar() {
             ))}
             <li>
               <a
-                href="/#contacto"
-                  onClick={menuClick("/#contacto")}
-                className="mt-1 block rounded-lg bg-sage px-3 py-2.5 text-center text-sm font-semibold text-night"
+                href={ASSISTANT_PATH}
+                onClick={menuClick(ASSISTANT_PATH)}
+                className={cn(btnSage, "mt-1 w-full")}
               >
-                Agenda una demo
+                <Mic className="h-4 w-4 shrink-0" aria-hidden />
+                Habla con el asistente
               </a>
             </li>
           </motion.ul>

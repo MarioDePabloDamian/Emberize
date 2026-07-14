@@ -3,31 +3,32 @@
 import { motion } from "motion/react";
 import { Quote } from "lucide-react";
 import SectionHeading from "./SectionHeading";
+import SectionNextCta from "./SectionNextCta";
 
 const testimonials = [
   {
     quote:
-      "Antes perdía consultas de WhatsApp todos los días. Ahora el chatbot agenda las sesiones de prueba solo y yo me entero por el calendario. Hemos pasado de 8 a 21 pruebas al mes.",
+      "Antes recibía consultas por WhatsApp a deshoras y no siempre podía responder. Ahora el asistente gestiona las solicitudes de prueba y yo recibo la confirmación. Por fin puedo terminar la sesión sin estar pendiente del móvil.",
     name: "Marta C.",
-    role: "Responsable, estudio de Pilates Reformer",
+    role: "Responsable, estudio de Pilates Reformer · Madrid",
   },
   {
     quote:
-      "El agente de voz atiende el teléfono mientras doy clase. Los interesados reciben la información al momento y llegan a la prueba ya convencidos. Es como tener recepcionista sin el coste.",
+      "En plena clase las llamadas las atiende el asistente al momento. Resuelve las dudas y quien llega a la prueba viene mejor informado. Es como contar con recepcionista, sin el coste fijo de plantilla.",
     name: "Laura G.",
-    role: "Responsable, estudio de Pilates y Barre",
+    role: "Responsable, estudio de Pilates y Barre · Sevilla",
   },
   {
     quote:
-      "Con el SEO local pasamos de no salir en Google a ser el primer estudio de la zona, y la landing con seguimiento automático nos trajo 34 altas nuevas. La inversión se pagó sola el primer mes.",
+      "Antes apenas aparecíamos en Google. Hoy nos encuentran cuando buscan pilates en la zona. La landing y el seguimiento automático nos ayudan a que más interesados prueben clase y se queden.",
     name: "Irene R.",
-    role: "Responsable, centro de Pilates Clínico",
+    role: "Responsable, centro de Pilates Clínico · Bilbao",
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section className="cv-auto relative px-6 py-24 sm:py-32">
+    <section id="testimonios" className="cv-auto relative scroll-mt-22 px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           chapter="Capítulo 04 — La prueba"
@@ -60,6 +61,8 @@ export default function Testimonials() {
             </motion.figure>
           ))}
         </div>
+
+        <SectionNextCta href="#faq">Resuelve tus dudas</SectionNextCta>
       </div>
     </section>
   );
